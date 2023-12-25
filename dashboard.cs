@@ -40,5 +40,11 @@ namespace Banking_App
             new send_money(user, this).Show();
             this.Hide();
         }
+
+        private void transactions_button_Click(object sender, EventArgs e)
+        {
+            new transactions(user, this).Show();
+            this.Hide();
+        }
     }
 }

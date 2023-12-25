@@ -41,6 +41,9 @@ namespace Banking_App
                     if (dataRow[1].Contains("@") == false || dataRow[1].Contains(".") == false)
                         validationMessage += "\n - The email must not be empty and in the correct format.";
 
+                    if (dataRow[1] == user[2])
+                        validationMessage += "\n - You cannot transfer money to yourself.";
+
                     break;
 
                 case "CNIC":
@@ -51,6 +54,9 @@ namespace Banking_App
                         dataRow[1].All(char.IsDigit) == false
                     )
                         validationMessage += "\n - The CNIC must have a length of 13 characters.";
+
+                    if (dataRow[1] == user[4])
+                        validationMessage += "\n - You cannot transfer money to yourself.";
 
                     break;
 
@@ -72,6 +78,7 @@ namespace Banking_App
                 if (amount > balance)
                     validationMessage += "\n - The amount must not be more than the balance.";
             }
+
 
             return validationMessage;
         }
@@ -126,6 +133,15 @@ namespace Banking_App
             string newAmount = (int.Parse(user[5]) - amount_entered).ToString();
             user = dashboard.update_balance(newAmount);
             FileSystemCus.UpdateRow("users", user);
+
+            // adding transaction in file
+            string[] transRow = {
+                user[0],
+                bfUserData[0],
+                inputs[2],
+                DateTime.Now.ToString(),
+            };
+            FileSystemCus.writeData("transactions", transRow);
 
             MessageBox.Show("Successfully Transferred.");
             this.Close();

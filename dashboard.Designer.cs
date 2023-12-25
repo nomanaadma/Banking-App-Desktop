@@ -105,6 +105,7 @@
             transactions_button.TabIndex = 7;
             transactions_button.Text = "Transactions";
             transactions_button.UseVisualStyleBackColor = true;
+            transactions_button.Click += transactions_button_Click;
             // 
             // dashboard
             // 

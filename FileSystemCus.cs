@@ -14,12 +14,19 @@ namespace Banking_App
 
             string dataFolderPath = dataPath();
 
+            // creating ./data directory to store data
             if (!Directory.Exists(dataFolderPath))
                 Directory.CreateDirectory(dataFolderPath);
 
+            // creating user file
             string userPath = filePath("users");
             if (!File.Exists(userPath))
                 File.WriteAllText(userPath, "id,full_name,email,password,cnic,balance\r\n");
+
+            // creating transactions file
+            string transactionPath = filePath("transactions");
+            if (!File.Exists(transactionPath))
+                File.WriteAllText(transactionPath, "id,from,to,amount,date\r\n");
 
         }
 
