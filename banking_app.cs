@@ -7,14 +7,14 @@ namespace Banking_App
             InitializeComponent();
         }
 
-        private void banking_app_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void signup_Click(object sender, EventArgs e)
         {
             new signup().Show();
+        }
+
+        private void login_Click(object sender, EventArgs e)
+        {
+            new login().Show();
         }
     }
 }

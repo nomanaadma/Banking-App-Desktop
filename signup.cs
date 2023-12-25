@@ -54,10 +54,10 @@ namespace Banking_App
                 validationMessage += "\n - The Full Name must be more than 5 characters.";
 
             if (dataRow[1].Contains("@") == false || dataRow[1].Contains(".") == false)
-                validationMessage += "\n - The email must be in the correct format.";
+                validationMessage += "\n - The email must not be empty and in the correct format.";
 
             if (this.validatePassword(dataRow[2]) == false)
-                validationMessage += "\n - The password must be between 5 and 10 characters in length, include at least one lowercase and one uppercase character, and should not contain any white spaces.";
+                validationMessage += "\n - The password must be between 5 and 10 characters in length, include at least one lowercase and one uppercase character, and must not contain any white spaces.";
 
             if (
                 dataRow[3].Length > 13 ||
@@ -72,9 +72,9 @@ namespace Banking_App
 
                 string[] existingConditions = { dataRow[1], dataRow[3] };
 
-                string[] existing = FileSystemCus.findRows("users", existingConditions);
+                string[] matchingRows = FileSystemCus.findRows("users", existingConditions);
 
-                if (existing.Length > 0)
+                if (matchingRows.Length > 0)
                     validationMessage += "\n - The User Already Exists";
 
             }

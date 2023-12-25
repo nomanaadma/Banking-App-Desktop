@@ -43,6 +43,7 @@
             login.TextAlign = ContentAlignment.TopCenter;
             login.UseMnemonic = false;
             login.UseVisualStyleBackColor = true;
+            login.Click += login_Click;
             // 
             // signup_button
             // 
@@ -73,7 +74,6 @@
             Controls.Add(login);
             Name = "banking_app";
             Text = "Banking App";
-            Load += banking_app_Load;
             ResumeLayout(false);
         }
 
