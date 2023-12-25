@@ -28,26 +28,49 @@
         /// </summary>
         private void InitializeComponent()
         {
-            go_to = new Button();
+            login = new Button();
+            signup_button = new Button();
+            atm = new Button();
             SuspendLayout();
             // 
-            // go_to
+            // login
             // 
-            go_to.Location = new Point(265, 143);
-            go_to.Name = "go_to";
-            go_to.Size = new Size(205, 29);
-            go_to.TabIndex = 0;
-            go_to.Text = "Go to another form";
-            go_to.TextAlign = ContentAlignment.TopCenter;
-            go_to.UseVisualStyleBackColor = true;
-            go_to.Click += go_to_Click;
+            login.Location = new Point(70, 184);
+            login.Name = "login";
+            login.Size = new Size(205, 29);
+            login.TabIndex = 0;
+            login.Text = "Login";
+            login.TextAlign = ContentAlignment.TopCenter;
+            login.UseMnemonic = false;
+            login.UseVisualStyleBackColor = true;
+            // 
+            // signup_button
+            // 
+            signup_button.Location = new Point(315, 184);
+            signup_button.Name = "signup_button";
+            signup_button.Size = new Size(189, 29);
+            signup_button.TabIndex = 1;
+            signup_button.Text = "Signup";
+            signup_button.UseVisualStyleBackColor = true;
+            signup_button.Click += signup_Click;
+            // 
+            // atm
+            // 
+            atm.Location = new Point(547, 184);
+            atm.Name = "atm";
+            atm.Size = new Size(181, 29);
+            atm.TabIndex = 2;
+            atm.Text = "Atm";
+            atm.UseVisualStyleBackColor = true;
             // 
             // banking_app
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(go_to);
+            Controls.Add(atm);
+            Controls.Add(signup_button);
+            Controls.Add(login);
             Name = "banking_app";
             Text = "Banking App";
             Load += banking_app_Load;
@@ -56,6 +79,8 @@
 
         #endregion
 
-        private Button go_to;
+        private Button login;
+        private Button signup_button;
+        private Button atm;
     }
 }

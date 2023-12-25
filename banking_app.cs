@@ -12,10 +12,9 @@ namespace Banking_App
 
         }
 
-        private void go_to_Click(object sender, EventArgs e)
+        private void signup_Click(object sender, EventArgs e)
         {
-            new another_form().Show();
-            // this.Hide();
+            new signup().Show();
         }
     }
 }
