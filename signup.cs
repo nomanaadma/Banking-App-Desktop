@@ -89,7 +89,8 @@ namespace Banking_App
                 full_name_input.Text.Trim(),
                 email_input.Text.Trim(),
                 password_input.Text.Trim(),
-                cnic_input.Text.Trim()
+                cnic_input.Text.Trim(),
+                "0"
             };
 
             string validate = this.validation(dataRow);

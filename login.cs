@@ -12,7 +12,7 @@ namespace Banking_App
 {
     public partial class login : Form
     {
-        private string user;
+        private string[] user;
         public login()
         {
             InitializeComponent();
@@ -39,7 +39,7 @@ namespace Banking_App
                 if (matchingRows.Length == 0)
                     validationMessage += "\n - Invalid User or Password";
                 else
-                    this.user = matchingRows[0];
+                    this.user = matchingRows[0].Split(',');
 
             }
 
@@ -48,6 +48,10 @@ namespace Banking_App
 
         private void login_button_Click(object sender, EventArgs e)
         {
+            // temp
+            email_input.Text = "nomanaadma@gmail.con";
+            password_input.Text = "Admin";
+            // temp
 
             string[] dataRow = {
                 email_input.Text.Trim(),
@@ -62,7 +66,8 @@ namespace Banking_App
                 return;
             }
 
-            MessageBox.Show("User is signed up." + this.user);
+            new dashboard(user).Show();
+            this.Close();
 
         }
     }

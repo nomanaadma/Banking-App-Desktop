@@ -1,2 +1,7 @@
-ID,full_name,email,password,cnic,
-8wXLEb,Noman,nomanaadma@gmail.con,Admin,4230148518495,
+ID,full_name,email,password,cnic,balance,
+1wXLEb,Noman,nomanaadma@gmail.coa,Admin,4230148518495,12,
+2wXLEb,Noman,nomanaadma@gmail.cos,Admin,4230148518495,12,
+3wXLEb,Noman,nomanaadma@gmail.cod,Admin,4230148518495,12,
+8wXLEb,Noman,nomanaadma@gmail.con,Admin,4230148518495,5300,
+4wXLEb,Noman,nomanaadma@gmail.com,Admin,4230148518495,12,
+5wXLEb,Noman,nomanaadma@gmail.coo,Admin,4230148518495,12
