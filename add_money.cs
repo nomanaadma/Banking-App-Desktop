@@ -27,9 +27,9 @@ namespace Banking_App
         {
             string amount = enter_amount_input.Text.Trim();
 
-            if(amount.All(char.IsDigit) == false)
+            if (amount.All(char.IsDigit) == false || amount == "")
             {
-                MessageBox.Show("Amount Should be in Numbers Only");
+                MessageBox.Show("The amount must not be empty and in numbers only.");
                 return;
             }
 
@@ -42,6 +42,12 @@ namespace Banking_App
             this.Close();
             dashboard.Show();
 
+        }
+
+        private void back_button_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            dashboard.Show();
         }
     }
 }

@@ -95,6 +95,7 @@
             send_money_button.TabIndex = 6;
             send_money_button.Text = "Send Money";
             send_money_button.UseVisualStyleBackColor = true;
+            send_money_button.Click += send_money_button_Click;
             // 
             // transactions_button
             // 

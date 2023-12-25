@@ -16,5 +16,10 @@ namespace Banking_App
         {
             new login().Show();
         }
+
+        private void atm_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Hello, this is a custom message box!", "Custom MessageBox", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }

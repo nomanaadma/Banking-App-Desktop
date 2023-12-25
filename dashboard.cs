@@ -18,7 +18,7 @@ namespace Banking_App
         private void dashboard_Load(object sender, EventArgs e)
         {
             user_label.Text = user[1];
-            update_balance( amount_label.Text );
+            update_balance(user[5]);
         }
         public string[] update_balance(string amount)
         {
@@ -33,6 +33,12 @@ namespace Banking_App
             new add_money(user, this).Show();
             this.Hide();
 
+        }
+
+        private void send_money_button_Click(object sender, EventArgs e)
+        {
+            new send_money(user, this).Show();
+            this.Hide();
         }
     }
 }

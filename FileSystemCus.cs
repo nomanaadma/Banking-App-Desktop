@@ -68,8 +68,6 @@ namespace Banking_App
 
             return lines;
 
-            // return lines.Where(w => w != lines[0]).ToArray();
-
         }
 
         public static string[] findRows(string file, string[] conditions)

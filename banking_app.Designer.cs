@@ -63,6 +63,7 @@
             atm.TabIndex = 2;
             atm.Text = "Atm";
             atm.UseVisualStyleBackColor = true;
+            atm.Click += atm_Click;
             // 
             // banking_app
             // 

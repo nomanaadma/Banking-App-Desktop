@@ -58,7 +58,7 @@ namespace Banking_App
                 password_input.Text.Trim(),
             };
 
-            string validate = this.validation(dataRow);
+            string validate = validation(dataRow);
 
             if (validate != "")
             {

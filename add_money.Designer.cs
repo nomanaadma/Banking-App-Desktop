@@ -31,6 +31,7 @@
             enter_amount_label = new Label();
             enter_amount_input = new TextBox();
             add_money_label = new Button();
+            back_button = new Button();
             SuspendLayout();
             // 
             // enter_amount_label
@@ -59,11 +60,22 @@
             add_money_label.UseVisualStyleBackColor = true;
             add_money_label.Click += add_money_label_Click;
             // 
+            // back_button
+            // 
+            back_button.Location = new Point(348, 357);
+            back_button.Name = "back_button";
+            back_button.Size = new Size(94, 29);
+            back_button.TabIndex = 3;
+            back_button.Text = "Back";
+            back_button.UseVisualStyleBackColor = true;
+            back_button.Click += back_button_Click;
+            // 
             // add_money
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(back_button);
             Controls.Add(add_money_label);
             Controls.Add(enter_amount_input);
             Controls.Add(enter_amount_label);
@@ -78,5 +90,6 @@
         private Label enter_amount_label;
         private TextBox enter_amount_input;
         private Button add_money_label;
+        private Button back_button;
     }
 }

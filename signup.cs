@@ -93,7 +93,7 @@ namespace Banking_App
                 "0"
             };
 
-            string validate = this.validation(dataRow);
+            string validate = validation(dataRow);
 
             if (validate != "")
             {
