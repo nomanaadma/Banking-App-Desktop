@@ -27,6 +27,7 @@ namespace Banking_App
 
         public static string filePath(string file) 
         {
+
             return Path.Combine(dataPath(), file) + extension;
         }
 
@@ -61,10 +62,41 @@ namespace Banking_App
         {
             file = filePath(file);
             string[] lines = File.ReadAllLines(file, Encoding.UTF8);
-            return lines;
+
+            return lines.Where(w => w != lines[0]).ToArray();
+            
         }
 
+        public static string[] findRows(string file, string[] conditions)
+        {
+         
+            string[] data = readData(file);
 
+            string[] foundRows = { };
+
+            foreach (var row in data)
+            {
+
+                int matchCount = 0;
+                foreach (var cond in conditions)
+                {
+                    string condtionQoma = cond + ',';
+                    if (row.Contains(condtionQoma))
+                        matchCount++;
+
+                    if(matchCount == conditions.Length)
+                    {
+                        Array.Resize(ref foundRows, foundRows.Length + 1);
+                        foundRows[foundRows.Length - 1] = row;
+                    }
+
+                }
+
+            }
+
+            return foundRows;
+
+        }
 
     }
 }

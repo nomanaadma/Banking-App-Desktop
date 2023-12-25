@@ -5,9 +5,11 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 
 namespace Banking_App
@@ -44,46 +46,59 @@ namespace Banking_App
         }
 
 
-        private string validation()
+        private string validation(string[] dataRow)
         {
             string validationMessage = "";
 
-            if (full_name_input.TextLength < 5)
+            if (dataRow[0].Length < 5)
                 validationMessage += "\n - The Full Name must be more than 5 characters.";
 
-            if (email_input.Text.Contains("@") == false || email_input.Text.Contains(".") == false)
+            if (dataRow[1].Contains("@") == false || dataRow[1].Contains(".") == false)
                 validationMessage += "\n - The email must be in the correct format.";
 
-            if (this.validatePassword(password_input.Text) == false)
+            if (this.validatePassword(dataRow[2]) == false)
                 validationMessage += "\n - The password must be between 5 and 10 characters in length, include at least one lowercase and one uppercase character, and should not contain any white spaces.";
 
-            if ( 
-                cnic_input.Text.Length > 13 ||
-                cnic_input.Text.Length < 13 ||
-                cnic_input.Text.All(char.IsDigit) == false
+            if (
+                dataRow[3].Length > 13 ||
+                dataRow[3].Length < 13 ||
+                dataRow[3].All(char.IsDigit) == false
             )
                 validationMessage += "\n - The CNIC must have a length of 13 characters.";
-            
+
+
+            if(validationMessage == "")
+            {
+
+                string[] existingConditions = { dataRow[1], dataRow[3] };
+
+                string[] existing = FileSystemCus.findRows("users", existingConditions);
+
+                if (existing.Length > 0)
+                    validationMessage += "\n - The User Already Exists";
+
+            }
+
             return validationMessage;
         }
 
         private void signup_button_Click(object sender, EventArgs e)
         {
 
-            string validate = this.validation();
+            string[] dataRow = {
+                full_name_input.Text.Trim(),
+                email_input.Text.Trim(),
+                password_input.Text.Trim(),
+                cnic_input.Text.Trim()
+            };
+
+            string validate = this.validation(dataRow);
 
             if (validate != "")
             {
                 MessageBox.Show(validate);
                 return;
             }
-
-            string[] dataRow = { 
-                full_name_input.Text.Trim(), 
-                email_input.Text.Trim(), 
-                password_input.Text.Trim(), 
-                cnic_input.Text.Trim() 
-            };
 
             FileSystemCus.writeData("users", dataRow);
 
