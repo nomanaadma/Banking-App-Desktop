@@ -1,14 +1,9 @@
-﻿using System.Globalization;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
-namespace Banking_App
+﻿namespace Banking_App
 {
     public partial class dashboard : Form
     {
         private string[] user;
-        private int dynamicNumber = 0;
         private System.Windows.Forms.Timer timer;
-        private bool isRecursiveFunctionRunning = false;
         public dashboard(string[] loggedInUser)
         {
             user = loggedInUser;
@@ -19,7 +14,7 @@ namespace Banking_App
         {
             user_label.Text = user[1];
             card_value.Text = user[6];
-            expiry_value.Text = user[7];
+            expiry_value.Text = "02/" + user[7];
             cvc_value.Text = user[8];
             update_balance(user[5]);
         }
@@ -50,6 +45,12 @@ namespace Banking_App
             this.Hide();
         }
 
+        private void withdraw_money_button_Click(object sender, EventArgs e)
+        {
+            new withdraw_money(user, this).Show();
+            this.Hide();
+        }
+
         private void card_value_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(card_value.Text);
@@ -64,5 +65,6 @@ namespace Banking_App
         {
             Clipboard.SetText(cvc_value.Text);
         }
+
     }
 }

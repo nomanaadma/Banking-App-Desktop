@@ -38,7 +38,5 @@ namespace Banking_App
             return shortId;
         }
 
-
-
     }
 }

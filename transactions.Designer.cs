@@ -120,7 +120,9 @@
             Margin = new Padding(4, 3, 4, 3);
             MaximizeBox = false;
             Name = "transactions";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Transactions";
+            Shown += transactions_Load;
             ((System.ComponentModel.ISupportInitialize)transaction_data).EndInit();
             ResumeLayout(false);
             PerformLayout();

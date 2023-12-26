@@ -15,22 +15,19 @@ namespace Banking_App
     {
         private string[] user;
         private dashboard dashboard;
+        private int rowLength = 0;
         public transactions(string[] loggedInUser, dashboard dashboard)
         {
             user = loggedInUser;
             this.dashboard = dashboard;
-            InitializeComponent();
-
 
             string[] userTrans = { user[0] };
 
             string[] userTransRows = FileSystemCus.findRows("transactions", userTrans);
 
-            if (userTransRows.Length == 0)
-            {
-                MessageBox.Show("There are no transaction.");
-                return;
-            }
+            InitializeComponent();
+            
+            rowLength = userTransRows.Length;
 
             Array.Reverse(userTransRows);
 
@@ -62,7 +59,7 @@ namespace Banking_App
                 }
                 else if (rowData[2] == "none")
                 {
-                    reference = "Money Withdraw through ATM";
+                    reference = "Money Withdrawed";
                 }
                 else
                 {
@@ -113,12 +110,10 @@ namespace Banking_App
             if (e.ColumnIndex != targetColumnIndex)
                 return;
 
-
             if (Convert.ToInt32(e.Value) < 0)
                 e.CellStyle.ForeColor = Color.Red;
             else
                 e.CellStyle.ForeColor = Color.Green;
-
 
         }
 
@@ -126,6 +121,14 @@ namespace Banking_App
         {
             this.Close();
             dashboard.Show();
+        }
+
+        private void transactions_Load(object sender, EventArgs e)
+        {
+
+            if(rowLength == 0)
+                MessageBox.Show("There are no transaction.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
         }
     }
 }

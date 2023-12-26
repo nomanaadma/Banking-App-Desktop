@@ -68,7 +68,7 @@ namespace Banking_App
 
             }
 
-            if (dataRow[2].All(char.IsDigit) == false || dataRow[2] == "")
+            if (dataRow[2].All(char.IsDigit) == false || dataRow[2] == "" || dataRow[2] == "0")
                 validationMessage += "\n - The amount must not be empty and in numbers only.";
             else
             {
@@ -79,8 +79,7 @@ namespace Banking_App
                     validationMessage += "\n - The amount must not be more than the balance.";
             }
 
-
-            return validationMessage;
+            return validationMessage.TrimStart('\n');
         }
 
         private void send_money_button_Click(object sender, EventArgs e)
@@ -96,7 +95,7 @@ namespace Banking_App
 
             if (validate != "")
             {
-                MessageBox.Show(validate);
+                MessageBox.Show(validate, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -106,7 +105,7 @@ namespace Banking_App
 
             if (bfUserRow.Length == 0)
             {
-                MessageBox.Show("The User Does Not Found");
+                MessageBox.Show("The User Can't be Found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -143,7 +142,7 @@ namespace Banking_App
             };
             FileSystemCus.writeData("transactions", transRow);
 
-            MessageBox.Show("Successfully Transferred.");
+            MessageBox.Show("Amount Transferred Successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
             dashboard.Show();
 

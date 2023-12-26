@@ -41,13 +41,14 @@
             expiry_value = new Label();
             cvc_label = new Label();
             cvc_value = new Label();
+            withdraw_money_button = new Button();
             SuspendLayout();
             // 
             // welcome_label
             // 
             welcome_label.AutoSize = true;
             welcome_label.Font = new Font("JetBrains Mono", 13.7999992F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            welcome_label.Location = new Point(24, 28);
+            welcome_label.Location = new Point(24, 32);
             welcome_label.Margin = new Padding(4, 0, 4, 0);
             welcome_label.Name = "welcome_label";
             welcome_label.Size = new Size(111, 30);
@@ -59,7 +60,7 @@
             // 
             balance_label.AutoSize = true;
             balance_label.ForeColor = Color.Black;
-            balance_label.Location = new Point(27, 118);
+            balance_label.Location = new Point(27, 122);
             balance_label.Margin = new Padding(4, 0, 4, 0);
             balance_label.Name = "balance_label";
             balance_label.Size = new Size(120, 22);
@@ -72,7 +73,7 @@
             user_label.AutoSize = true;
             user_label.Font = new Font("JetBrains Mono", 19.7999973F, FontStyle.Bold, GraphicsUnit.Point, 0);
             user_label.ForeColor = Color.FromArgb(27, 39, 51);
-            user_label.Location = new Point(20, 59);
+            user_label.Location = new Point(20, 63);
             user_label.Margin = new Padding(4, 0, 4, 0);
             user_label.Name = "user_label";
             user_label.Size = new Size(199, 44);
@@ -85,7 +86,7 @@
             amount_label.AutoSize = true;
             amount_label.Font = new Font("JetBrains Mono", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             amount_label.ForeColor = Color.Black;
-            amount_label.Location = new Point(147, 116);
+            amount_label.Location = new Point(147, 120);
             amount_label.Margin = new Padding(4, 0, 4, 0);
             amount_label.Name = "amount_label";
             amount_label.Size = new Size(24, 26);
@@ -98,7 +99,7 @@
             add_money_button.BackColor = Color.FromArgb(27, 39, 51);
             add_money_button.FlatStyle = FlatStyle.Popup;
             add_money_button.ForeColor = Color.White;
-            add_money_button.Location = new Point(479, 28);
+            add_money_button.Location = new Point(411, 28);
             add_money_button.Margin = new Padding(4, 3, 4, 3);
             add_money_button.Name = "add_money_button";
             add_money_button.Size = new Size(256, 44);
@@ -113,7 +114,7 @@
             transactions_button.FlatAppearance.BorderColor = Color.FromArgb(0, 112, 224);
             transactions_button.FlatStyle = FlatStyle.Popup;
             transactions_button.ForeColor = Color.Black;
-            transactions_button.Location = new Point(479, 175);
+            transactions_button.Location = new Point(411, 197);
             transactions_button.Margin = new Padding(4, 3, 4, 3);
             transactions_button.Name = "transactions_button";
             transactions_button.Size = new Size(256, 44);
@@ -128,7 +129,7 @@
             send_money_button.FlatAppearance.BorderColor = SystemColors.MenuHighlight;
             send_money_button.FlatStyle = FlatStyle.Flat;
             send_money_button.ForeColor = Color.WhiteSmoke;
-            send_money_button.Location = new Point(479, 102);
+            send_money_button.Location = new Point(411, 83);
             send_money_button.Margin = new Padding(4, 3, 4, 3);
             send_money_button.Name = "send_money_button";
             send_money_button.Size = new Size(256, 44);
@@ -141,7 +142,7 @@
             // card_label
             // 
             card_label.AutoSize = true;
-            card_label.Location = new Point(27, 158);
+            card_label.Location = new Point(27, 162);
             card_label.Name = "card_label";
             card_label.Size = new Size(60, 22);
             card_label.TabIndex = 11;
@@ -151,7 +152,7 @@
             // 
             card_value.AutoSize = true;
             card_value.Cursor = Cursors.Hand;
-            card_value.Location = new Point(93, 158);
+            card_value.Location = new Point(93, 162);
             card_value.Name = "card_value";
             card_value.Size = new Size(20, 22);
             card_value.TabIndex = 12;
@@ -161,7 +162,7 @@
             // expiry_label
             // 
             expiry_label.AutoSize = true;
-            expiry_label.Location = new Point(27, 197);
+            expiry_label.Location = new Point(27, 201);
             expiry_label.Name = "expiry_label";
             expiry_label.Size = new Size(80, 22);
             expiry_label.TabIndex = 13;
@@ -170,7 +171,7 @@
             // expiry_value
             // 
             expiry_value.AutoSize = true;
-            expiry_value.Location = new Point(107, 197);
+            expiry_value.Location = new Point(107, 201);
             expiry_value.Name = "expiry_value";
             expiry_value.Size = new Size(20, 22);
             expiry_value.TabIndex = 14;
@@ -181,7 +182,7 @@
             // cvc_label
             // 
             cvc_label.AutoSize = true;
-            cvc_label.Location = new Point(198, 197);
+            cvc_label.Location = new Point(198, 201);
             cvc_label.Name = "cvc_label";
             cvc_label.Size = new Size(50, 22);
             cvc_label.TabIndex = 15;
@@ -190,12 +191,29 @@
             // cvc_value
             // 
             cvc_value.AutoSize = true;
-            cvc_value.Location = new Point(254, 197);
+            cvc_value.Location = new Point(254, 201);
             cvc_value.Name = "cvc_value";
             cvc_value.Size = new Size(20, 22);
             cvc_value.TabIndex = 16;
             cvc_value.Text = "-";
             cvc_value.Click += cvc_value_Click;
+            // 
+            // withdraw_money_button
+            // 
+            withdraw_money_button.BackColor = Color.Maroon;
+            withdraw_money_button.FlatAppearance.BorderColor = Color.Black;
+            withdraw_money_button.FlatAppearance.BorderSize = 0;
+            withdraw_money_button.FlatStyle = FlatStyle.Flat;
+            withdraw_money_button.ForeColor = Color.WhiteSmoke;
+            withdraw_money_button.Location = new Point(411, 139);
+            withdraw_money_button.Margin = new Padding(4, 3, 4, 3);
+            withdraw_money_button.Name = "withdraw_money_button";
+            withdraw_money_button.Size = new Size(256, 44);
+            withdraw_money_button.TabIndex = 17;
+            withdraw_money_button.Text = "Withdraw Money";
+            withdraw_money_button.UseMnemonic = false;
+            withdraw_money_button.UseVisualStyleBackColor = false;
+            withdraw_money_button.Click += withdraw_money_button_Click;
             // 
             // dashboard
             // 
@@ -203,7 +221,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             BackgroundImageLayout = ImageLayout.Zoom;
-            ClientSize = new Size(787, 253);
+            ClientSize = new Size(705, 266);
+            Controls.Add(withdraw_money_button);
             Controls.Add(cvc_value);
             Controls.Add(cvc_label);
             Controls.Add(expiry_value);
@@ -245,5 +264,6 @@
         private Label expiry_value;
         private Label cvc_label;
         private Label cvc_value;
+        private Button withdraw_money_button;
     }
 }

@@ -167,6 +167,7 @@
             Margin = new Padding(4, 3, 4, 3);
             MaximizeBox = false;
             Name = "send_money";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "N&H Send Money";
             ResumeLayout(false);
             PerformLayout();

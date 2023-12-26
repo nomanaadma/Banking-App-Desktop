@@ -20,14 +20,6 @@ namespace Banking_App
         public signup()
         {
             InitializeComponent();
-            // Set the start position to manual
-            this.StartPosition = FormStartPosition.Manual;
-
-            // Set the location to the right of the screen
-            int screenRight = Screen.PrimaryScreen.WorkingArea.Right;
-            int formWidth = this.Width;
-            this.Location = new System.Drawing.Point(screenRight - formWidth - 100, 100);
-
         }
         private void show_password_input_CheckedChanged(object sender, EventArgs e)
         {
@@ -101,7 +93,7 @@ namespace Banking_App
                 cnic_input.Text.Trim(),
                 "0",
                 GlobalCus.generate_number(16), // Card Number
-                GlobalCus.generate_number(4), // Expiry
+                GlobalCus.generate_number(2), // Expiry
                 GlobalCus.generate_number(3), // CVC
             };
 

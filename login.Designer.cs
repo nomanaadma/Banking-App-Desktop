@@ -130,6 +130,7 @@
             Margin = new Padding(4, 3, 4, 3);
             MaximizeBox = false;
             Name = "login";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "N&H Login";
             ResumeLayout(false);
             PerformLayout();

@@ -16,14 +16,6 @@ namespace Banking_App
         public login()
         {
             InitializeComponent();
-
-            this.StartPosition = FormStartPosition.Manual;
-
-            // Set the location to the right of the screen
-            int screenRight = Screen.PrimaryScreen.WorkingArea.Right;
-            int formWidth = this.Width;
-            this.Location = new System.Drawing.Point(screenRight - formWidth - 100, 100);
-
         }
 
         private string validation(string[] dataRow)
