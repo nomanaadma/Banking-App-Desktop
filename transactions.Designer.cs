@@ -75,7 +75,6 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.WindowText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             transaction_data.DefaultCellStyle = dataGridViewCellStyle2;
-            transaction_data.Enabled = false;
             transaction_data.Location = new Point(48, 32);
             transaction_data.MultiSelect = false;
             transaction_data.Name = "transaction_data";

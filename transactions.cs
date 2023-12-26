@@ -72,18 +72,18 @@ namespace Banking_App
                     if (transferred_by_crUser)
                     {
                         otherUserCond[0] = rowData[2];
-                        reference = "Money Tranfered to ";
+                        reference = "Money Tranfered to: ";
                     }
                     else
                     {
                         otherUserCond[0] = user[0];
-                        reference = "Money Tranfered by ";
+                        reference = "Money Tranfered by: ";
                     }
 
                     string[] matchTransaction = FileSystemCus.findRows("users", otherUserCond);
                     string[] userTransdata = matchTransaction[0].Split(",");
 
-                    reference += userTransdata[2] + " " + userTransdata[4];
+                    reference += userTransdata[2] + " - " + userTransdata[4];
 
                 }
 
