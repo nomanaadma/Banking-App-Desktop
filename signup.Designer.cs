@@ -1,6 +1,6 @@
 ﻿namespace Banking_App
 {
-    partial class signup
+    partial class Signup
     {
         /// <summary>
         /// Required designer variable.
@@ -143,7 +143,6 @@
             cnic_input.Name = "cnic_input";
             cnic_input.Size = new Size(258, 30);
             cnic_input.TabIndex = 5;
-            cnic_input.TextChanged += cnic_input_TextChanged;
             // 
             // signup_label
             // 

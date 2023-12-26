@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace Banking_App
 {
-    public partial class login : Form
+    public partial class Login : Form
     {
-        private string[] user;
-        public login()
+        private string[] user = new string[10];
+        public Login()
         {
             InitializeComponent();
         }
@@ -22,7 +22,7 @@ namespace Banking_App
         {
             string validationMessage = "";
 
-            if (dataRow[0].Contains("@") == false || dataRow[0].Contains(".") == false)
+            if (dataRow[0].Contains('@') == false || dataRow[0].Contains('.') == false)
                 validationMessage += "\n - The email must not be empty and in the correct format.";
 
             if (dataRow[0].Length <= 0)
@@ -62,7 +62,7 @@ namespace Banking_App
                 return;
             }
 
-            new dashboard(user).Show();
+            new Dashboard(user).Show();
             this.Close();
 
         }

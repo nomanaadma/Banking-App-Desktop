@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Button back_button;
             enter_amount_label = new Label();
             add_money_label = new Label();
             enter_amount_input = new TextBox();
@@ -124,6 +123,5 @@
         private Button add_money_button;
         private Button back_button;
         private Label add_money_label;
-        private TextBox email_input;
     }
 }

@@ -11,12 +11,12 @@ using System.Windows.Forms;
 
 namespace Banking_App
 {
-    public partial class transactions : Form
+    public partial class Transactions : Form
     {
         private string[] user;
-        private dashboard dashboard;
+        private Dashboard dashboard;
         private int rowLength = 0;
-        public transactions(string[] loggedInUser, dashboard dashboard)
+        public Transactions(string[] loggedInUser, Dashboard dashboard)
         {
             user = loggedInUser;
             this.dashboard = dashboard;
@@ -102,12 +102,12 @@ namespace Banking_App
 
         }
 
-        private void DataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        private void DataGridView1_CellFormatting(object? sender, DataGridViewCellFormattingEventArgs e)
         {
 
             int targetColumnIndex = 1;
 
-            if (e.ColumnIndex != targetColumnIndex)
+            if (e.ColumnIndex != targetColumnIndex || e.CellStyle == null)
                 return;
 
             if (Convert.ToInt32(e.Value) < 0)

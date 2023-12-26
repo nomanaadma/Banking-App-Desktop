@@ -13,8 +13,8 @@ namespace Banking_App
     public partial class withdraw_money : Form
     {
         private string[] user;
-        private dashboard dashboard;
-        public withdraw_money(string[] loggedInUser, dashboard dashboard)
+        private Dashboard dashboard;
+        public withdraw_money(string[] loggedInUser, Dashboard dashboard)
         {
             user = loggedInUser;
             this.dashboard = dashboard;

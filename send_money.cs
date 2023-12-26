@@ -13,8 +13,8 @@ namespace Banking_App
     public partial class send_money : Form
     {
         private string[] user;
-        private dashboard dashboard;
-        public send_money(string[] loggedInUser, dashboard dashboard)
+        private Dashboard dashboard;
+        public send_money(string[] loggedInUser, Dashboard dashboard)
         {
             user = loggedInUser;
             this.dashboard = dashboard;

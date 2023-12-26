@@ -137,7 +137,6 @@
         private Button withdraw_money_button;
         private Button back_button;
         private Label withdraw_label;
-        private TextBox email_input;
         private Label money_label;
     }
 }

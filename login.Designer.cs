@@ -1,6 +1,6 @@
 ﻿namespace Banking_App
 {
-    partial class login
+    partial class Login
     {
         /// <summary>
         /// Required designer variable.

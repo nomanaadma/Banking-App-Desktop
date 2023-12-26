@@ -2,42 +2,44 @@
 
 namespace Banking_App
 {
-    public partial class dashboard : Form
+    public partial class Dashboard : Form
     {
         private string[] user;
-        private System.Windows.Forms.Timer myTimer;
-        private bool isRecursiveFunctionRunning = false;
-        public dashboard(string[] loggedInUser)
+        private System.Windows.Forms.Timer updateTimer;
+        private bool isUpdateRunning = false;
+        public Dashboard(string[] loggedInUser)
         {
             user = loggedInUser;
             InitializeComponent();
 
-            // Initialize the Timer
-            myTimer = new System.Windows.Forms.Timer();
-            myTimer.Interval = 1000; // 1 second
-            myTimer.Tick += MyTimer_Tick;
+            updateTimer = new System.Windows.Forms.Timer
+            {
+                Interval = 1000
+            };
+
+            updateTimer.Tick += updateTimerTick;
 
             // Start the Timer
-            myTimer.Start();
+            updateTimer.Start();
         }
 
-        private void MyTimer_Tick(object sender, EventArgs e)
+        private void updateTimerTick(object? sender, EventArgs e)
         {
             // Check if the recursive function is already running
-            if (!isRecursiveFunctionRunning)
+            if (!isUpdateRunning)
             {
                 // Set the flag to indicate that the function is now running
-                isRecursiveFunctionRunning = true;
+                isUpdateRunning = true;
 
                 // Your recursive function logic goes here
-                RecursiveFunction();
+                update_balance_r();
 
                 // Reset the flag after the function completes
-                isRecursiveFunctionRunning = false;
+                isUpdateRunning = false;
             }
         }
 
-        private void RecursiveFunction()
+        private void update_balance_r()
         {
             string[] user_id = { user[0] };
             string[] userRows = FileSystemCus.findRows("users", user_id);
@@ -79,7 +81,7 @@ namespace Banking_App
 
         private void transactions_button_Click(object sender, EventArgs e)
         {
-            new transactions(user, this).Show();
+            new Transactions(user, this).Show();
             this.Hide();
         }
 

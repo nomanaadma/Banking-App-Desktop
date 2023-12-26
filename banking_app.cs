@@ -9,12 +9,12 @@ namespace Banking_App
 
         private void signup_Click(object sender, EventArgs e)
         {
-            new signup().Show();
+            new Signup().Show();
         }
 
         private void login_Click(object sender, EventArgs e)
         {
-            new login().Show();
+            new Login().Show();
         }
 
         private void atm_Click(object sender, EventArgs e)

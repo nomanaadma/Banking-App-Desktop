@@ -15,9 +15,9 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Banking_App
 {
-    public partial class signup : Form
+    public partial class Signup : Form
     {
-        public signup()
+        public Signup()
         {
             InitializeComponent();
         }
@@ -40,7 +40,7 @@ namespace Banking_App
             if (!passwd.Any(char.IsLower))
                 return false;
 
-            if (passwd.Contains(" "))
+            if (passwd.Contains(' '))
                 return false;
 
             return true;
@@ -54,7 +54,7 @@ namespace Banking_App
             if (dataRow[0].Length < 5)
                 validationMessage += "\n - The Full Name must be more than 5 characters.";
 
-            if (dataRow[1].Contains("@") == false || dataRow[1].Contains(".") == false)
+            if (dataRow[1].Contains('@') == false || dataRow[1].Contains('.') == false)
                 validationMessage += "\n - The email must not be empty and in the correct format.";
 
             if (this.validatePassword(dataRow[2]) == false)
@@ -112,9 +112,5 @@ namespace Banking_App
 
         }
 
-        private void cnic_input_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Banking_App
 {
-    partial class transactions
+    partial class Transactions
     {
         /// <summary>
         /// Required designer variable.

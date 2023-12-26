@@ -1,6 +1,6 @@
 ﻿namespace Banking_App
 {
-    partial class dashboard
+    partial class Dashboard
     {
         /// <summary>
         /// Required designer variable.

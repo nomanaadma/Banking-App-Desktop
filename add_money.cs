@@ -14,9 +14,9 @@ namespace Banking_App
     public partial class add_money : Form
     {
         private string[] user;
-        private dashboard dashboard;
+        private Dashboard dashboard;
 
-        public add_money(string[] loggedInUser, dashboard dashboard)
+        public add_money(string[] loggedInUser, Dashboard dashboard)
         {
             user = loggedInUser;
             this.dashboard = dashboard;
