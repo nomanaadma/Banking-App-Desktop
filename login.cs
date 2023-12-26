@@ -12,7 +12,7 @@ namespace Banking_App
 {
     public partial class Login : Form
     {
-        private string[] user = new string[10];
+        private string[] user = [];
         public Login()
         {
             InitializeComponent();
@@ -31,16 +31,23 @@ namespace Banking_App
 
             if (validationMessage == "")
             {
+                string[] matchingUser = FileSystemCus.findOne("users", dataRow[0]);
 
-                string[] matchingUsers = FileSystemCus.findRows("users", [
-                    dataRow[0],
-                    dataRow[1]
-                ]);
-
-                if (matchingUsers.Length == 0)
-                    validationMessage += "\n - Invalid User or Password";
+                if (matchingUser.Length == 0) {
+                    validationMessage += "\n - Invalid Email";
+                } 
                 else
-                    user = matchingUsers[0].Split(',');
+                {
+                    // if entered password not equal to file password
+                    if (matchingUser[3] != dataRow[1])
+                    {
+                        validationMessage += "\n - Invalid Password";
+                    }
+                    else
+                    {
+                        user = matchingUser;
+                    }
+                }
 
             }
 

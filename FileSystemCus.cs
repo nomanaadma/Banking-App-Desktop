@@ -42,8 +42,6 @@ namespace Banking_App
         }
 
         
-
-
         public static void writeData(string file, string[] data)
         {
             file = filePath(file);
@@ -68,35 +66,32 @@ namespace Banking_App
 
         }
 
-        public static string[] findRows(string file, string[] conditions)
+        public static string[] findAll(string file, string data, bool single = false)
         {
+            string[] rows = readData(file);
 
-            string[] data = readData(file);
+            string[] foundRows = [];
 
-            string[] foundRows = { };
+            string dataWithQoma = data + ',';
 
-            foreach (var row in data)
+            foreach (var row in rows)
             {
-
-                int matchCount = 0;
-                foreach (var cond in conditions)
+                if (row.Contains(dataWithQoma))
                 {
-                    string condtionQoma = cond + ',';
-                    if (row.Contains(condtionQoma))
-                        matchCount++;
+                    if (single == true) return row.Split(',');
 
-                    if (matchCount == conditions.Length)
-                    {
-                        Array.Resize(ref foundRows, foundRows.Length + 1);
-                        foundRows[foundRows.Length - 1] = row;
-                    }
-
+                    Array.Resize(ref foundRows, foundRows.Length + 1);
+                    foundRows[foundRows.Length - 1] = row;
                 }
-
+           
             }
 
             return foundRows;
+        }
 
+        public static string[] findOne(string file, string data)
+        {
+            return findAll(file, data, true);
         }
 
         public static void UpdateRow(string file, string[] rowData) {

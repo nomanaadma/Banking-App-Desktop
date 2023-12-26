@@ -100,8 +100,7 @@ namespace Banking_App
             }
 
             // find the beneficiary user by ID
-            string[] findBfUser = [ inputs[1] ];
-            string[] bfUserRow = FileSystemCus.findRows("users", findBfUser);
+            string[] bfUserRow = FileSystemCus.findOne("users", inputs[1]);
 
             if (bfUserRow.Length == 0)
             {

@@ -41,12 +41,12 @@ namespace Banking_App
 
         private void update_balance_r()
         {
-            string[] userRows = FileSystemCus.findRows("users", [ user[0] ]);
+            string[] userRows = FileSystemCus.findOne("users", user[0]);
             
             if (userRows.Length == 0)
                 return;
 
-            user = userRows[0].Split(',');
+            user = userRows;
 
             update_balance(user[5]);
 

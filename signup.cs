@@ -70,13 +70,16 @@ namespace Banking_App
 
             if (validationMessage == "")
             {
+                
+                string[] getUserByMail = FileSystemCus.findOne("users", dataRow[1]);
 
-                string[] existingConditions = { dataRow[1], dataRow[3] };
+                if(getUserByMail.Length != 0)
+                    validationMessage += "\n - The User with this email already Exists";
 
-                string[] matchingRows = FileSystemCus.findRows("users", existingConditions);
+                string[] getUserByCNIC = FileSystemCus.findOne("users", dataRow[3]);
 
-                if (matchingRows.Length > 0)
-                    validationMessage += "\n - The User Already Exists";
+                if (getUserByCNIC.Length != 0)
+                    validationMessage += "\n - The User with this CNIC already Exists";
 
             }
 

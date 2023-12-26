@@ -21,9 +21,7 @@ namespace Banking_App
             user = loggedInUser;
             this.dashboard = dashboard;
 
-            string[] userTrans = { user[0] };
-
-            string[] userTransRows = FileSystemCus.findRows("transactions", userTrans);
+            string[] userTransRows = FileSystemCus.findAll("transactions", user[0]);
 
             InitializeComponent();
             
@@ -63,22 +61,21 @@ namespace Banking_App
                 else
                 {
 
-                    string[] otherUserCond = new string[1];
+                    string otherUserCond = "";
 
                     // if the transaction is done by current loggedin user to some other user
                     if (transferred_by_crUser)
                     {
-                        otherUserCond[0] = rowData[2];
+                        otherUserCond = rowData[2];
                         reference = "Money Tranfered to: ";
                     }
                     else
                     {
-                        otherUserCond[0] = user[0];
+                        otherUserCond = user[0];
                         reference = "Money Tranfered by: ";
                     }
 
-                    string[] matchTransaction = FileSystemCus.findRows("users", otherUserCond);
-                    string[] userTransdata = matchTransaction[0].Split(",");
+                    string[] userTransdata = FileSystemCus.findOne("users", otherUserCond);
 
                     reference += userTransdata[2] + " - " + userTransdata[4];
 

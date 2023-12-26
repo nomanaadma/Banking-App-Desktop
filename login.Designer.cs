@@ -70,6 +70,7 @@
             password_input.Location = new Point(60, 244);
             password_input.Margin = new Padding(4, 3, 4, 3);
             password_input.Name = "password_input";
+            password_input.PasswordChar = '*';
             password_input.Size = new Size(309, 30);
             password_input.TabIndex = 2;
             // 
@@ -111,7 +112,7 @@
             show_password_input.UseVisualStyleBackColor = true;
             show_password_input.CheckedChanged += show_password_input_CheckedChanged;
             // 
-            // login
+            // Login
             // 
             AutoScaleDimensions = new SizeF(10F, 22F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -129,7 +130,7 @@
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Margin = new Padding(4, 3, 4, 3);
             MaximizeBox = false;
-            Name = "login";
+            Name = "Login";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "N&H Login";
             ResumeLayout(false);
