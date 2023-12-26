@@ -48,10 +48,6 @@ namespace Banking_App
 
         private void login_button_Click(object sender, EventArgs e)
         {
-            // temp
-            email_input.Text = "nomanaadma@gmail.com";
-            password_input.Text = "Admin";
-            // temp
 
             string[] dataRow = {
                 email_input.Text.Trim(),

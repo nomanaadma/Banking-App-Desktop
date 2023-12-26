@@ -36,7 +36,7 @@ namespace Banking_App
 
             // updating amount to current user and file system
             string newAmount = (int.Parse(this.user[5]) + int.Parse(amount)).ToString();
-            user = dashboard.update_balance(newAmount);
+            user[5] = newAmount;
             FileSystemCus.UpdateRow("users", user);
 
             // adding transaction in file
