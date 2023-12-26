@@ -46,5 +46,10 @@ namespace Banking_App
             new transactions(user, this).Show();
             this.Hide();
         }
+
+        private void user_label_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

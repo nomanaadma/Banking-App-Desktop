@@ -32,15 +32,19 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             transaction_data = new DataGridView();
+            transactions_label = new Label();
             back_button = new Button();
             ((System.ComponentModel.ISupportInitialize)transaction_data).BeginInit();
             SuspendLayout();
             // 
             // back_button
             // 
-            back_button.Location = new Point(363, 398);
+            back_button.FlatStyle = FlatStyle.Flat;
+            back_button.ForeColor = Color.Black;
+            back_button.Location = new Point(334, 524);
+            back_button.Margin = new Padding(4, 3, 4, 3);
             back_button.Name = "back_button";
-            back_button.Size = new Size(94, 29);
+            back_button.Size = new Size(118, 32);
             back_button.TabIndex = 1;
             back_button.Text = "Back";
             back_button.UseVisualStyleBackColor = true;
@@ -70,12 +74,13 @@
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.ForeColor = Color.Black;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Window;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.WindowText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             transaction_data.DefaultCellStyle = dataGridViewCellStyle2;
-            transaction_data.Location = new Point(48, 32);
+            transaction_data.Location = new Point(31, 118);
+            transaction_data.Margin = new Padding(4, 3, 4, 3);
             transaction_data.MultiSelect = false;
             transaction_data.Name = "transaction_data";
             transaction_data.ReadOnly = true;
@@ -85,24 +90,46 @@
             transaction_data.RowTemplate.Resizable = DataGridViewTriState.False;
             transaction_data.ScrollBars = ScrollBars.Vertical;
             transaction_data.ShowEditingIcon = false;
-            transaction_data.Size = new Size(749, 344);
+            transaction_data.Size = new Size(739, 378);
             transaction_data.TabIndex = 0;
+            transaction_data.CellContentClick += transaction_data_CellContentClick;
+            // 
+            // transactions_label
+            // 
+            transactions_label.AutoSize = true;
+            transactions_label.Font = new Font("JetBrains Mono", 28.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            transactions_label.ForeColor = Color.FromArgb(27, 39, 51);
+            transactions_label.Location = new Point(31, 29);
+            transactions_label.Margin = new Padding(4, 0, 4, 0);
+            transactions_label.Name = "transactions_label";
+            transactions_label.Size = new Size(363, 62);
+            transactions_label.TabIndex = 24;
+            transactions_label.Text = "Transactions";
             // 
             // transactions
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 22F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            BackColor = Color.White;
+            ClientSize = new Size(802, 586);
+            Controls.Add(transactions_label);
             Controls.Add(back_button);
             Controls.Add(transaction_data);
+            Font = new Font("JetBrains Mono", 10.1999989F, FontStyle.Bold);
+            ForeColor = Color.Black;
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            Margin = new Padding(4, 3, 4, 3);
+            MaximizeBox = false;
             Name = "transactions";
             Text = "Transactions";
             ((System.ComponentModel.ISupportInitialize)transaction_data).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private DataGridView transaction_data;
+        private Label transactions_label;
     }
 }

@@ -56,14 +56,15 @@ namespace Banking_App
                 }
 
                 string reference = "";
-                if(rowData[1] == "none")
+                if (rowData[1] == "none")
                 {
                     reference = "Money Deposited";
-                } 
-                else if(rowData[2] == "none")
+                }
+                else if (rowData[2] == "none")
                 {
                     reference = "Money Withdraw through ATM";
-                } else
+                }
+                else
                 {
 
                     string[] otherUserCond = new string[1];
@@ -89,7 +90,7 @@ namespace Banking_App
 
 
                 dataTable.Rows.Add(reference, transAmount, rowData[4]);
-            }            
+            }
 
             // Bind the DataTable to the DataGridView
             transaction_data.DataSource = dataTable;
@@ -125,6 +126,11 @@ namespace Banking_App
         {
             this.Close();
             dashboard.Show();
+        }
+
+        private void transaction_data_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

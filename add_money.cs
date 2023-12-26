@@ -23,7 +23,7 @@ namespace Banking_App
             InitializeComponent();
         }
 
-        private void add_money_label_Click(object sender, EventArgs e)
+        private void add_money_button_Click(object sender, EventArgs e)
         {
             string amount = enter_amount_input.Text.Trim();
 
@@ -48,7 +48,7 @@ namespace Banking_App
             };
             FileSystemCus.writeData("transactions", transRow);
 
-           
+
             MessageBox.Show("Successfully Added.");
             this.Close();
             dashboard.Show();
@@ -60,5 +60,6 @@ namespace Banking_App
             this.Close();
             dashboard.Show();
         }
+
     }
 }

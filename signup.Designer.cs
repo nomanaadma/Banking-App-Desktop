@@ -180,7 +180,7 @@
             MaximizeBox = false;
             Name = "signup";
             StartPosition = FormStartPosition.CenterParent;
-            Text = "Signup";
+            Text = "N&H Signup";
             ResumeLayout(false);
             PerformLayout();
         }

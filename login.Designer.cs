@@ -62,7 +62,7 @@
             password_label.Margin = new Padding(4, 0, 4, 0);
             password_label.Name = "password_label";
             password_label.Size = new Size(90, 22);
-            password_label.TabIndex = 2;
+            password_label.TabIndex = 0;
             password_label.Text = "Password";
             // 
             // password_input
@@ -71,7 +71,7 @@
             password_input.Margin = new Padding(4, 3, 4, 3);
             password_input.Name = "password_input";
             password_input.Size = new Size(309, 30);
-            password_input.TabIndex = 3;
+            password_input.TabIndex = 2;
             // 
             // login_label
             // 
@@ -93,7 +93,7 @@
             login_button.Margin = new Padding(4, 3, 4, 3);
             login_button.Name = "login_button";
             login_button.Size = new Size(135, 41);
-            login_button.TabIndex = 16;
+            login_button.TabIndex = 4;
             login_button.Text = "Login";
             login_button.UseVisualStyleBackColor = false;
             login_button.Click += login_button_Click;
@@ -106,7 +106,7 @@
             show_password_input.Name = "show_password_input";
             show_password_input.RightToLeft = RightToLeft.No;
             show_password_input.Size = new Size(162, 26);
-            show_password_input.TabIndex = 17;
+            show_password_input.TabIndex = 3;
             show_password_input.Text = "Show Password";
             show_password_input.UseVisualStyleBackColor = true;
             show_password_input.CheckedChanged += show_password_input_CheckedChanged;
@@ -128,8 +128,9 @@
             ForeColor = Color.Gray;
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Margin = new Padding(4, 3, 4, 3);
+            MaximizeBox = false;
             Name = "login";
-            Text = "Login";
+            Text = "N&H Login";
             ResumeLayout(false);
             PerformLayout();
         }
