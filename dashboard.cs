@@ -18,6 +18,9 @@ namespace Banking_App
         private void dashboard_Load(object sender, EventArgs e)
         {
             user_label.Text = user[1];
+            card_value.Text = user[6];
+            expiry_value.Text = user[7];
+            cvc_value.Text = user[8];
             update_balance(user[5]);
         }
         public string[] update_balance(string amount)
@@ -47,9 +50,19 @@ namespace Banking_App
             this.Hide();
         }
 
-        private void user_label_Click(object sender, EventArgs e)
+        private void card_value_Click(object sender, EventArgs e)
         {
+            Clipboard.SetText(card_value.Text);
+        }
 
+        private void expiry_value_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(expiry_value.Text);
+        }
+
+        private void cvc_value_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(cvc_value.Text);
         }
     }
 }

@@ -92,7 +92,6 @@
             transaction_data.ShowEditingIcon = false;
             transaction_data.Size = new Size(739, 378);
             transaction_data.TabIndex = 0;
-            transaction_data.CellContentClick += transaction_data_CellContentClick;
             // 
             // transactions_label
             // 

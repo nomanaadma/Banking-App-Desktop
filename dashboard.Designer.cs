@@ -35,16 +35,22 @@
             add_money_button = new Button();
             transactions_button = new Button();
             send_money_button = new Button();
+            card_label = new Label();
+            card_value = new Label();
+            expiry_label = new Label();
+            expiry_value = new Label();
+            cvc_label = new Label();
+            cvc_value = new Label();
             SuspendLayout();
             // 
             // welcome_label
             // 
             welcome_label.AutoSize = true;
-            welcome_label.Font = new Font("Segoe UI", 15F);
+            welcome_label.Font = new Font("JetBrains Mono", 13.7999992F, FontStyle.Bold, GraphicsUnit.Point, 0);
             welcome_label.Location = new Point(24, 28);
             welcome_label.Margin = new Padding(4, 0, 4, 0);
             welcome_label.Name = "welcome_label";
-            welcome_label.Size = new Size(118, 35);
+            welcome_label.Size = new Size(111, 30);
             welcome_label.TabIndex = 0;
             welcome_label.Text = "Welcome";
             welcome_label.TextAlign = ContentAlignment.MiddleCenter;
@@ -52,12 +58,11 @@
             // balance_label
             // 
             balance_label.AutoSize = true;
-            balance_label.Font = new Font("Segoe UI", 12F);
             balance_label.ForeColor = Color.Black;
-            balance_label.Location = new Point(27, 141);
+            balance_label.Location = new Point(27, 118);
             balance_label.Margin = new Padding(4, 0, 4, 0);
             balance_label.Name = "balance_label";
-            balance_label.Size = new Size(107, 28);
+            balance_label.Size = new Size(120, 22);
             balance_label.TabIndex = 1;
             balance_label.Text = "Balance: Rs";
             balance_label.TextAlign = ContentAlignment.MiddleCenter;
@@ -65,26 +70,25 @@
             // user_label
             // 
             user_label.AutoSize = true;
-            user_label.Font = new Font("Segoe UI", 22F);
+            user_label.Font = new Font("JetBrains Mono", 19.7999973F, FontStyle.Bold, GraphicsUnit.Point, 0);
             user_label.ForeColor = Color.FromArgb(27, 39, 51);
-            user_label.Location = new Point(19, 74);
+            user_label.Location = new Point(20, 59);
             user_label.Margin = new Padding(4, 0, 4, 0);
             user_label.Name = "user_label";
-            user_label.Size = new Size(178, 50);
+            user_label.Size = new Size(199, 44);
             user_label.TabIndex = 3;
             user_label.Text = "User User";
             user_label.TextAlign = ContentAlignment.MiddleCenter;
-            user_label.Click += user_label_Click;
             // 
             // amount_label
             // 
             amount_label.AutoSize = true;
-            amount_label.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            amount_label.Font = new Font("JetBrains Mono", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             amount_label.ForeColor = Color.Black;
-            amount_label.Location = new Point(133, 142);
+            amount_label.Location = new Point(147, 116);
             amount_label.Margin = new Padding(4, 0, 4, 0);
             amount_label.Name = "amount_label";
-            amount_label.Size = new Size(24, 28);
+            amount_label.Size = new Size(24, 26);
             amount_label.TabIndex = 4;
             amount_label.Text = "0";
             amount_label.TextAlign = ContentAlignment.MiddleCenter;
@@ -134,13 +138,78 @@
             send_money_button.UseVisualStyleBackColor = false;
             send_money_button.Click += send_money_button_Click;
             // 
+            // card_label
+            // 
+            card_label.AutoSize = true;
+            card_label.Location = new Point(27, 158);
+            card_label.Name = "card_label";
+            card_label.Size = new Size(60, 22);
+            card_label.TabIndex = 11;
+            card_label.Text = "Card:";
+            // 
+            // card_value
+            // 
+            card_value.AutoSize = true;
+            card_value.Cursor = Cursors.Hand;
+            card_value.Location = new Point(93, 158);
+            card_value.Name = "card_value";
+            card_value.Size = new Size(20, 22);
+            card_value.TabIndex = 12;
+            card_value.Text = "-";
+            card_value.Click += card_value_Click;
+            // 
+            // expiry_label
+            // 
+            expiry_label.AutoSize = true;
+            expiry_label.Location = new Point(27, 197);
+            expiry_label.Name = "expiry_label";
+            expiry_label.Size = new Size(80, 22);
+            expiry_label.TabIndex = 13;
+            expiry_label.Text = "Expiry:";
+            // 
+            // expiry_value
+            // 
+            expiry_value.AutoSize = true;
+            expiry_value.Location = new Point(107, 197);
+            expiry_value.Name = "expiry_value";
+            expiry_value.Size = new Size(20, 22);
+            expiry_value.TabIndex = 14;
+            expiry_value.Text = "-";
+            expiry_value.UseMnemonic = false;
+            expiry_value.Click += expiry_value_Click;
+            // 
+            // cvc_label
+            // 
+            cvc_label.AutoSize = true;
+            cvc_label.Location = new Point(198, 197);
+            cvc_label.Name = "cvc_label";
+            cvc_label.Size = new Size(50, 22);
+            cvc_label.TabIndex = 15;
+            cvc_label.Text = "CVC:";
+            // 
+            // cvc_value
+            // 
+            cvc_value.AutoSize = true;
+            cvc_value.Location = new Point(254, 197);
+            cvc_value.Name = "cvc_value";
+            cvc_value.Size = new Size(20, 22);
+            cvc_value.TabIndex = 16;
+            cvc_value.Text = "-";
+            cvc_value.Click += cvc_value_Click;
+            // 
             // dashboard
             // 
             AutoScaleDimensions = new SizeF(10F, 22F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             BackgroundImageLayout = ImageLayout.Zoom;
-            ClientSize = new Size(787, 243);
+            ClientSize = new Size(787, 253);
+            Controls.Add(cvc_value);
+            Controls.Add(cvc_label);
+            Controls.Add(expiry_value);
+            Controls.Add(expiry_label);
+            Controls.Add(card_value);
+            Controls.Add(card_label);
             Controls.Add(add_money_button);
             Controls.Add(transactions_button);
             Controls.Add(send_money_button);
@@ -170,5 +239,11 @@
         private Button add_money_button;
         private Button transactions_button;
         private Button send_money_button;
+        private Label card_label;
+        private Label card_value;
+        private Label expiry_label;
+        private Label expiry_value;
+        private Label cvc_label;
+        private Label cvc_value;
     }
 }

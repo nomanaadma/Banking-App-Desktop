@@ -127,10 +127,5 @@ namespace Banking_App
             this.Close();
             dashboard.Show();
         }
-
-        private void transaction_data_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
     }
 }

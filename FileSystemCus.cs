@@ -8,7 +8,7 @@ namespace Banking_App
 {
     public class FileSystemCus
     {
-        public static string extension = ".csv";
+        public static string extension = ".txt";
         public static void initialize()
         {
 
@@ -21,7 +21,7 @@ namespace Banking_App
             // creating user file
             string userPath = filePath("users");
             if (!File.Exists(userPath))
-                File.WriteAllText(userPath, "id,full_name,email,password,cnic,balance\r\n");
+                File.WriteAllText(userPath, "id,full_name,email,password,cnic,balance,card_number,expiry,cvc\r\n");
 
             // creating transactions file
             string transactionPath = filePath("transactions");
@@ -41,23 +41,14 @@ namespace Banking_App
             return Path.Combine(dataPath(), file) + extension;
         }
 
-        public static string generateId()
-        {
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-            Random random = new Random();
-
-            string shortId = new string(Enumerable.Repeat(chars, 6)
-              .Select(s => s[random.Next(s.Length)]).ToArray());
-
-            return shortId;
-        }
+        
 
 
         public static void writeData(string file, string[] data)
         {
             file = filePath(file);
 
-            string dataRow = generateId() + ",";
+            string dataRow = GlobalCus.generateId() + ",";
             foreach (var item in data)
             {
                 dataRow += item + ",";

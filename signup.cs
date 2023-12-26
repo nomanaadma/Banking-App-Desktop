@@ -88,7 +88,7 @@ namespace Banking_App
 
             }
 
-            return validationMessage;
+            return validationMessage.TrimStart('\n');
         }
 
         private void signup_button_Click(object sender, EventArgs e)
@@ -99,20 +99,23 @@ namespace Banking_App
                 email_input.Text.Trim(),
                 password_input.Text.Trim(),
                 cnic_input.Text.Trim(),
-                "0"
+                "0",
+                GlobalCus.generate_number(16), // Card Number
+                GlobalCus.generate_number(4), // Expiry
+                GlobalCus.generate_number(3), // CVC
             };
 
             string validate = validation(dataRow);
 
             if (validate != "")
             {
-                MessageBox.Show(validate);
+                MessageBox.Show(validate, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             FileSystemCus.writeData("users", dataRow);
 
-            MessageBox.Show("Successfully Created Account");
+            MessageBox.Show("Successfully Created Account", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
 
         }

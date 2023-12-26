@@ -51,13 +51,13 @@ namespace Banking_App
 
             }
 
-            return validationMessage;
+            return validationMessage.TrimStart('\n');
         }
 
         private void login_button_Click(object sender, EventArgs e)
         {
             // temp
-            email_input.Text = "nomanaadma@gmail.con";
+            email_input.Text = "nomanaadma@gmail.com";
             password_input.Text = "Admin";
             // temp
 
@@ -70,7 +70,7 @@ namespace Banking_App
 
             if (validate != "")
             {
-                MessageBox.Show(validate);
+                MessageBox.Show(validate, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
