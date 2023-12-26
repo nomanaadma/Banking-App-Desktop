@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
 namespace Banking_App
@@ -19,6 +20,14 @@ namespace Banking_App
         public signup()
         {
             InitializeComponent();
+            // Set the start position to manual
+            this.StartPosition = FormStartPosition.Manual;
+
+            // Set the location to the right of the screen
+            int screenRight = Screen.PrimaryScreen.WorkingArea.Right;
+            int formWidth = this.Width;
+            this.Location = new System.Drawing.Point(screenRight - formWidth - 100, 100);
+
         }
         private void show_password_input_CheckedChanged(object sender, EventArgs e)
         {
@@ -67,7 +76,7 @@ namespace Banking_App
                 validationMessage += "\n - The CNIC must have a length of 13 characters.";
 
 
-            if(validationMessage == "")
+            if (validationMessage == "")
             {
 
                 string[] existingConditions = { dataRow[1], dataRow[3] };
@@ -105,6 +114,11 @@ namespace Banking_App
 
             MessageBox.Show("Successfully Created Account");
             this.Close();
+
+        }
+
+        private void cnic_input_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }

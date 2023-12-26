@@ -116,6 +116,7 @@
             ForeColor = Color.Gray;
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Margin = new Padding(4, 3, 4, 3);
+            MaximizeBox = false;
             Name = "banking_app";
             Text = "N&H Banking App";
             Load += banking_app_Load;

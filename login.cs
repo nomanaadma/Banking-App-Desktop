@@ -16,6 +16,14 @@ namespace Banking_App
         public login()
         {
             InitializeComponent();
+
+            this.StartPosition = FormStartPosition.Manual;
+
+            // Set the location to the right of the screen
+            int screenRight = Screen.PrimaryScreen.WorkingArea.Right;
+            int formWidth = this.Width;
+            this.Location = new System.Drawing.Point(screenRight - formWidth - 100, 100);
+
         }
 
         private string validation(string[] dataRow)
@@ -69,6 +77,14 @@ namespace Banking_App
             new dashboard(user).Show();
             this.Close();
 
+        }
+
+        private void show_password_input_CheckedChanged(object sender, EventArgs e)
+        {
+            if (show_password_input.Checked)
+                password_input.PasswordChar = '\0';
+            else
+                password_input.PasswordChar = '*';
         }
     }
 }
