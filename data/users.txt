@@ -1,3 +1,4 @@
 id,full_name,email,password,cnic,balance,card_number,expiry,cvc
 dHLk6N,Noman Shoukat,nomanaadma@gmail.com,Admin,4230148518495,4600,1694797531910288,87,742,
-eVhDpf,Amin Shoukat,aminshoukat@gmail.com,Admin2,4444444444444,1400,6623106838740750,46,774,
+eVhDpf,Amin Shoukat,aminshoukat@gmail.com,Admin2,4444444444444,1600,6623106838740750,46,774,
+mlplpY,Noman 2 Shoukat,nomanaadma@gmail.com,Admin,1111111111111,0,1780476478991639,21,285,

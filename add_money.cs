@@ -35,29 +35,30 @@ namespace Banking_App
             }
 
             // updating amount to current user and file system
-            string newAmount = (int.Parse(this.user[5]) + int.Parse(amount)).ToString();
+            int currentUserBalance = int.Parse(this.user[5]);
+            int moneyToAdd = int.Parse(amount);
+            string newAmount = (currentUserBalance + moneyToAdd).ToString();
             user[5] = newAmount;
             FileSystemCus.UpdateRow("users", user);
 
             // adding transaction in file
-            string[] transRow = {
+            FileSystemCus.writeData("transactions", [
                 "none",
                 user[0],
                 amount,
                 DateTime.Now.ToString(),
-            };
-            FileSystemCus.writeData("transactions", transRow);
+            ]);
 
 
             MessageBox.Show("Money Successfully Deposited.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.Close();
+            Close();
             dashboard.Show();
 
         }
 
         private void back_button_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
             dashboard.Show();
         }
 

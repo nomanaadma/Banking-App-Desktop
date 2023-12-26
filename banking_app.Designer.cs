@@ -105,7 +105,6 @@
             Name = "banking_app";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "N&H Banking App";
-            Load += banking_app_Load;
             ((System.ComponentModel.ISupportInitialize)logo_box).EndInit();
             ResumeLayout(false);
             PerformLayout();

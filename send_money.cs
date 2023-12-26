@@ -38,7 +38,7 @@ namespace Banking_App
             {
                 case "Email":
 
-                    if (dataRow[1].Contains("@") == false || dataRow[1].Contains(".") == false)
+                    if (dataRow[1].Contains('@') == false || dataRow[1].Contains('.') == false)
                         validationMessage += "\n - The email must not be empty and in the correct format.";
 
                     if (dataRow[1] == user[2])
@@ -100,7 +100,7 @@ namespace Banking_App
             }
 
             // find the beneficiary user by ID
-            string[] findBfUser = { inputs[1] };
+            string[] findBfUser = [ inputs[1] ];
             string[] bfUserRow = FileSystemCus.findRows("users", findBfUser);
 
             if (bfUserRow.Length == 0)
@@ -129,28 +129,28 @@ namespace Banking_App
             FileSystemCus.UpdateRow("users", bfUserData);
 
             // New Amount of Logged in user update
-            string newAmount = (int.Parse(user[5]) - amount_entered).ToString();
+            int currentUserBalance = int.Parse(user[5]);
+            string newAmount = (currentUserBalance - amount_entered).ToString();
             user[5] = newAmount;
             FileSystemCus.UpdateRow("users", user);
 
             // adding transaction in file
-            string[] transRow = {
+            FileSystemCus.writeData("transactions", [
                 user[0],
                 bfUserData[0],
                 inputs[2],
                 DateTime.Now.ToString(),
-            };
-            FileSystemCus.writeData("transactions", transRow);
+            ]);
 
             MessageBox.Show("Amount Transferred Successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.Close();
+            Close();
             dashboard.Show();
 
         }
 
         private void back_button_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
             dashboard.Show();
         }
     }

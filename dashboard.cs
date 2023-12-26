@@ -41,8 +41,7 @@ namespace Banking_App
 
         private void update_balance_r()
         {
-            string[] user_id = { user[0] };
-            string[] userRows = FileSystemCus.findRows("users", user_id);
+            string[] userRows = FileSystemCus.findRows("users", [ user[0] ]);
             
             if (userRows.Length == 0)
                 return;
@@ -70,25 +69,25 @@ namespace Banking_App
         private void add_money_button_Click(object sender, EventArgs e)
         {
             new add_money(user, this).Show();
-            this.Hide();
+            Hide();
         }
 
         private void send_money_button_Click(object sender, EventArgs e)
         {
             new send_money(user, this).Show();
-            this.Hide();
+            Hide();
         }
 
         private void transactions_button_Click(object sender, EventArgs e)
         {
             new Transactions(user, this).Show();
-            this.Hide();
+            Hide();
         }
 
         private void withdraw_money_button_Click(object sender, EventArgs e)
         {
             new withdraw_money(user, this).Show();
-            this.Hide();
+            Hide();
         }
 
         private void card_value_Click(object sender, EventArgs e)

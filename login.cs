@@ -32,14 +32,15 @@ namespace Banking_App
             if (validationMessage == "")
             {
 
-                string[] existingConditions = { dataRow[0], dataRow[1] };
+                string[] matchingUsers = FileSystemCus.findRows("users", [
+                    dataRow[0],
+                    dataRow[1]
+                ]);
 
-                string[] matchingRows = FileSystemCus.findRows("users", existingConditions);
-
-                if (matchingRows.Length == 0)
+                if (matchingUsers.Length == 0)
                     validationMessage += "\n - Invalid User or Password";
                 else
-                    this.user = matchingRows[0].Split(',');
+                    user = matchingUsers[0].Split(',');
 
             }
 
@@ -49,12 +50,10 @@ namespace Banking_App
         private void login_button_Click(object sender, EventArgs e)
         {
 
-            string[] dataRow = {
+            string validate = validation([
                 email_input.Text.Trim(),
                 password_input.Text.Trim(),
-            };
-
-            string validate = validation(dataRow);
+            ]);
 
             if (validate != "")
             {
@@ -63,7 +62,7 @@ namespace Banking_App
             }
 
             new Dashboard(user).Show();
-            this.Close();
+            Close();
 
         }
 

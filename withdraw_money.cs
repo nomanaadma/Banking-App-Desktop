@@ -23,7 +23,7 @@ namespace Banking_App
 
         private void back_button_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
             dashboard.Show();
         }
 
@@ -52,17 +52,16 @@ namespace Banking_App
             FileSystemCus.UpdateRow("users", user);
 
             // adding transaction in file
-            string[] transRow = {
+            FileSystemCus.writeData("transactions", [
                 user[0],
                 "none",
                 amount,
                 DateTime.Now.ToString(),
-            };
-            FileSystemCus.writeData("transactions", transRow);
+            ]);
 
             MessageBox.Show("Successfully Withdrawed", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            this.Close();
+            Close();
             dashboard.Show();
 
         }

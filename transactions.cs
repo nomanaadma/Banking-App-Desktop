@@ -32,7 +32,6 @@ namespace Banking_App
             Array.Reverse(userTransRows);
 
 
-            // Sample data
             DataTable dataTable = new DataTable();
             dataTable.Columns.Add("Reference");
             dataTable.Columns.Add("Amount");
@@ -119,7 +118,7 @@ namespace Banking_App
 
         private void back_button_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
             dashboard.Show();
         }
 
