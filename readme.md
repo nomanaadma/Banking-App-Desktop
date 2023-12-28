@@ -25,14 +25,14 @@ Viewing transaction history
 
 ## Screenshots
 
-![home](../blob/screenshots/home.jpg?raw=true)
-![signup](../blob/screenshots/signup.jpg?raw=true)
-![login](../blob/screenshots/login.jpg?raw=true)
-![dashboard](../blob/screenshots/dashboard.jpg?raw=true)
-![add_money](../blob/screenshots/add_money.jpg?raw=true)
-![send_money](../blob/screenshots/send_money.jpg?raw=true)
-![withdraw_money](../blob/screenshots/withdraw_money.jpg?raw=true)
-![transactions](../blob/screenshots/transactions.jpg?raw=true)
+![home](../master/screenshots/home.jpg?raw=true)
+![signup](../master/screenshots/signup.jpg?raw=true)
+![login](../master/screenshots/login.jpg?raw=true)
+![dashboard](../master/screenshots/dashboard.jpg?raw=true)
+![add_money](../master/screenshots/add_money.jpg?raw=true)
+![send_money](../master/screenshots/send_money.jpg?raw=true)
+![withdraw_money](../master/screenshots/withdraw_money.jpg?raw=true)
+![transactions](../master/screenshots/transactions.jpg?raw=true)
 
 ## Features
 **User Accounts**
