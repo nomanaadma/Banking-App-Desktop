@@ -100,9 +100,9 @@ namespace Banking_App
             }
 
             // find the beneficiary user by ID
-            string[] bfUserRow = FileSystemCus.findOne("users", inputs[1]);
+            string[] bfUserData = FileSystemCus.findOne("users", inputs[1]);
 
-            if (bfUserRow.Length == 0)
+            if (bfUserData.Length == 0)
             {
                 MessageBox.Show("The User Can't be Found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -112,10 +112,6 @@ namespace Banking_App
 
             if (dr == DialogResult.No)
                 return;
-
-
-            // split row data by , seperated
-            string[] bfUserData = bfUserRow[0].Split(",");
 
             // getting existing balance of the beneficiary user
             int bfUserBalance = int.Parse(bfUserData[5]);
