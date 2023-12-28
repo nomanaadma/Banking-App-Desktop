@@ -25,14 +25,14 @@ Viewing transaction history
 
 ## Screenshots
 
-![home](https://raw.githubusercontent.com/nomanaadma/Banking-App/master/screenshots/home.jpg)
-![signup](https://raw.githubusercontent.com/nomanaadma/Banking-App/master/screenshots/signup.jpg)
-![login](https://raw.githubusercontent.com/nomanaadma/Banking-App/master/screenshots/login.jpg)
-![dashboard](https://raw.githubusercontent.com/nomanaadma/Banking-App/master/screenshots/dashboard.jpg)
-![add_money](https://raw.githubusercontent.com/nomanaadma/Banking-App/master/screenshots/add_money.jpg)
-![send_money](https://raw.githubusercontent.com/nomanaadma/Banking-App/master/screenshots/send_money.jpg)
-![withdraw_money](https://raw.githubusercontent.com/nomanaadma/Banking-App/master/screenshots/withdraw_money.jpg)
-![transactions](https://raw.githubusercontent.com/nomanaadma/Banking-App/master/screenshots/transactions.jpg)
+![home](../screenshots/home.jpg)
+![signup](../screenshots/signup.jpg)
+![login](../screenshots/login.jpg)
+![dashboard](../screenshots/dashboard.jpg)
+![add_money](../screenshots/add_money.jpg)
+![send_money](../screenshots/send_money.jpg)
+![withdraw_money](../screenshots/withdraw_money.jpg)
+![transactions](../screenshots/transactions.jpg)
 
 ## Features
 **User Accounts**
