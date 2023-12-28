@@ -168,7 +168,7 @@
             MaximizeBox = false;
             Name = "send_money";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "N&H Send Money";
+            Text = "Send Money";
             ResumeLayout(false);
             PerformLayout();
         }

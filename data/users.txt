@@ -1,5 +1,0 @@
-id,full_name,email,password,cnic,balance,card_number,expiry,cvc
-ydTjQc,hasssaan,hassaan@gmail.com,NKsfkmcada,1234567890122,1466,7193719302857856,97,079,
-Du4Qtp,alisufian,ali@gmail.com,Abcdefghij,1234567890123,0,3224176969761870,17,158,
-FMzxpZ,alisufian1,ali3@gmail.com,Abcdefghij,1234567890124,22788,5660887736237007,18,036,
-MiXYWW,hassaan1,hassaan1@gmail.com,Abcdefghij,1234567890125,1000,0080988835618195,13,707,

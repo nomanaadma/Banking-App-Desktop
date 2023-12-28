@@ -155,7 +155,7 @@
             signup_label.TabIndex = 14;
             signup_label.Text = "SignUp";
             // 
-            // signup
+            // Signup
             // 
             AutoScaleDimensions = new SizeF(10F, 22F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -177,9 +177,9 @@
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Margin = new Padding(4, 3, 4, 3);
             MaximizeBox = false;
-            Name = "signup";
+            Name = "Signup";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "N&H Signup";
+            Text = "Signup";
             ResumeLayout(false);
             PerformLayout();
         }

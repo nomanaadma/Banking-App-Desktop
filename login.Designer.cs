@@ -132,7 +132,7 @@
             MaximizeBox = false;
             Name = "Login";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "N&H Login";
+            Text = "Login";
             ResumeLayout(false);
             PerformLayout();
         }

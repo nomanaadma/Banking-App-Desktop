@@ -215,7 +215,7 @@
             withdraw_money_button.UseVisualStyleBackColor = false;
             withdraw_money_button.Click += withdraw_money_button_Click;
             // 
-            // dashboard
+            // Dashboard
             // 
             AutoScaleDimensions = new SizeF(10F, 22F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -241,9 +241,9 @@
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Margin = new Padding(4, 3, 4, 3);
             MaximizeBox = false;
-            Name = "dashboard";
+            Name = "Dashboard";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "N&H Dashboard";
+            Text = "Dashboard";
             Load += dashboard_Load;
             ResumeLayout(false);
             PerformLayout();

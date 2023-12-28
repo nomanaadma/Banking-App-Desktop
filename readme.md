@@ -1,26 +1,82 @@
-meezan bank
-habib bank
+# N&H BANK
 
+## Table of Contents
 
+- [Overview](#overview)
+- [Screenshots](#screenshots)
+- [Features](#features)
+- [Technologies](#technologies)
+- [Usage](#usage)
 
+## Overview
+This C# Windows Forms application was developed as a semester project for Programming Fundamentals. It provides basic financial management features, including:
 
-Meezan Bank Limited
-Habib Bank Limited
-Standard Chartered Bank
-United Bank Limited
-Allied Bank Limited
-Askari Bank Limited 
-Bank Alfalah Limited
-Bank Al-Habib Limited
-Bank Islami Pakistan Limited 
-Bank of Punjab
-Faysal Bank Limited 
-MCB Bank Limited
-JS Bank Limited
-Silk Bank Limited
-Sindh Bank Limited
-Soneri Bank Limited
+User account management (login and signup)
 
+Dashboard for viewing account balance and transactions
 
+Adding money to the account
 
-https://www.sbp.org.pk/notifications/FD/DamFund/Detail-1.pdf
+Sending money to other users
+
+Transferring money between accounts
+
+Viewing transaction history
+
+## Screenshots
+
+![home](https://raw.githubusercontent.com/nomanaadma/Banking-App/master/screenshots/home.jpg)
+![signup](https://raw.githubusercontent.com/nomanaadma/Banking-App/master/screenshots/signup.jpg)
+![login](https://raw.githubusercontent.com/nomanaadma/Banking-App/master/screenshots/login.jpg)
+![dashboard](https://raw.githubusercontent.com/nomanaadma/Banking-App/master/screenshots/dashboard.jpg)
+![add_money](https://raw.githubusercontent.com/nomanaadma/Banking-App/master/screenshots/add_money.jpg)
+![send_money](https://raw.githubusercontent.com/nomanaadma/Banking-App/master/screenshots/send_money.jpg)
+![withdraw_money](https://raw.githubusercontent.com/nomanaadma/Banking-App/master/screenshots/withdraw_money.jpg)
+![transactions](https://raw.githubusercontent.com/nomanaadma/Banking-App/master/screenshots/transactions.jpg)
+
+## Features
+**User Accounts**
+
+Users can create new accounts through a signup process.
+Users can log in to existing accounts using their credentials.
+
+**Dashboard**
+
+The dashboard provides a clear overview of the user's account balance.
+Recent transactions are displayed for easy reference.
+
+**Money Management**
+
+Users can add money to their accounts.
+Users can send money to other users within the application.
+Users can transfer money between their own accounts.
+
+**Transaction History**
+
+A detailed transaction history is available, allowing users to track their financial activity.
+
+## Technologies
+C#
+
+.NET Framework
+
+Windows Forms
+
+## Installation and Setup
+Ensure you have Visual Studio with .NET Framework installed on your system.
+
+Download or clone the project repository.
+
+Open the solution file (.sln) in Visual Studio.
+
+Build the project.
+
+Run the application.
+
+## Usage
+Upon launching the application, you'll be prompted to either log in or create a new account.
+
+Once logged in, you'll be directed to the dashboard.
+
+Use the buttons or menu options to navigate between features and perform actions.
+
