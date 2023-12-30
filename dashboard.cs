@@ -4,7 +4,7 @@ namespace Banking_App
 {
     public partial class Dashboard : Form
     {
-        private string[] user;
+        public string[] user;
         private System.Windows.Forms.Timer updateTimer;
         private bool isUpdateRunning = false;
         public Dashboard(string[] loggedInUser)
@@ -68,25 +68,25 @@ namespace Banking_App
 
         private void add_money_button_Click(object sender, EventArgs e)
         {
-            new add_money(user, this).Show();
+            new add_money(this).Show();
             Hide();
         }
 
         private void send_money_button_Click(object sender, EventArgs e)
         {
-            new send_money(user, this).Show();
+            new send_money(this).Show();
             Hide();
         }
 
         private void transactions_button_Click(object sender, EventArgs e)
         {
-            new Transactions(user, this).Show();
+            new Transactions(this).Show();
             Hide();
         }
 
         private void withdraw_money_button_Click(object sender, EventArgs e)
         {
-            new withdraw_money(user, this).Show();
+            new withdraw_money(this).Show();
             Hide();
         }
 

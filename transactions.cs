@@ -16,10 +16,10 @@ namespace Banking_App
         private string[] user;
         private Dashboard dashboard;
         private int rowLength = 0;
-        public Transactions(string[] loggedInUser, Dashboard dashboard)
+        public Transactions(Dashboard dashboardCl)
         {
-            user = loggedInUser;
-            this.dashboard = dashboard;
+            dashboard = dashboardCl;
+            user = dashboard.user;
 
             string[] userTransRows = FileSystemCus.findAll("transactions", user[0]);
 

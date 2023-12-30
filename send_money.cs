@@ -14,10 +14,10 @@ namespace Banking_App
     {
         private string[] user;
         private Dashboard dashboard;
-        public send_money(string[] loggedInUser, Dashboard dashboard)
+        public send_money(Dashboard dashboardCl)
         {
-            user = loggedInUser;
-            this.dashboard = dashboard;
+            dashboard = dashboardCl;
+            user = dashboard.user;
             InitializeComponent();
         }
 
