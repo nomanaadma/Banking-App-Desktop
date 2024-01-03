@@ -1,6 +1,4 @@
-﻿using static System.Net.Mime.MediaTypeNames;
-
-namespace Banking_App
+﻿namespace Banking_App
 {
     public partial class Dashboard : Form
     {

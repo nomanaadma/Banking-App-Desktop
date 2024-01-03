@@ -1,8 +1,4 @@
-﻿using System.Data;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+﻿using System.Text;
 
 namespace Banking_App
 {
@@ -37,33 +33,20 @@ namespace Banking_App
 
         public static string filePath(string file)
         {
-
             return Path.Combine(dataPath(), file) + extension;
         }
 
-        
         public static void writeData(string file, string[] data)
         {
             file = filePath(file);
-
-            string dataRow = GlobalCus.generateId() + ",";
-            foreach (var item in data)
-            {
-                dataRow += item + ",";
-            }
-            dataRow += "\r\n";
-
+            string dataRow = GlobalCus.generateId() + "," + string.Join(",", data) + ",\r\n";
             File.AppendAllText(file, dataRow);
-
         }
 
         public static string[] readData(string file)
         {
             file = filePath(file);
-            string[] lines = File.ReadAllLines(file, Encoding.UTF8);
-
-            return lines;
-
+            return File.ReadAllLines(file, Encoding.UTF8);
         }
 
         public static string[] findAll(string file, string data, bool single = false)
@@ -103,13 +86,10 @@ namespace Banking_App
             {
                 if( row.Contains(rowData[0]+",") )
                 {
-                    foreach (var item in rowData)
-                    {
-                        if(item != "")
-                            newData += item + ",";
-                    }
-                    newData += "\r\n";
-                } else
+                    string updatedRow = string.Join(",", rowData) + "\r\n";
+                    newData += updatedRow;
+                }
+                else
                 {
                     newData += row + "\r\n";
                 }
@@ -120,7 +100,6 @@ namespace Banking_App
             File.AppendAllText(file, newData);
 
         }
-
 
     }
 }
