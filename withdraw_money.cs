@@ -59,7 +59,7 @@ namespace Banking_App
                 DateTime.Now.ToString(),
             ]);
 
-            MessageBox.Show("Successfully Withdrawed", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Successfully withdrew", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             Close();
             dashboard.Show();

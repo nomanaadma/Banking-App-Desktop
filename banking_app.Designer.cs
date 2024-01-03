@@ -104,7 +104,7 @@
             MaximizeBox = false;
             Name = "banking_app";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "N&H Banking App";
+            Text = "NS Banking App";
             ((System.ComponentModel.ISupportInitialize)logo_box).EndInit();
             ResumeLayout(false);
             PerformLayout();

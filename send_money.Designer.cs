@@ -74,7 +74,7 @@
             // send_type_label
             // 
             send_type_label.AutoSize = true;
-            send_type_label.Location = new Point(90, 225);
+            send_type_label.Location = new Point(98, 225);
             send_type_label.Margin = new Padding(4, 0, 4, 0);
             send_type_label.Name = "send_type_label";
             send_type_label.Size = new Size(0, 22);

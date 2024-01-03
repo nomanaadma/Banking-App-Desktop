@@ -157,7 +157,6 @@
             card_value.Size = new Size(20, 22);
             card_value.TabIndex = 12;
             card_value.Text = "-";
-            card_value.Click += card_value_Click;
             // 
             // expiry_label
             // 
@@ -177,7 +176,6 @@
             expiry_value.TabIndex = 14;
             expiry_value.Text = "-";
             expiry_value.UseMnemonic = false;
-            expiry_value.Click += expiry_value_Click;
             // 
             // cvc_label
             // 
@@ -196,7 +194,6 @@
             cvc_value.Size = new Size(20, 22);
             cvc_value.TabIndex = 16;
             cvc_value.Text = "-";
-            cvc_value.Click += cvc_value_Click;
             // 
             // withdraw_money_button
             // 

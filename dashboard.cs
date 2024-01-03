@@ -90,20 +90,5 @@ namespace Banking_App
             Hide();
         }
 
-        private void card_value_Click(object sender, EventArgs e)
-        {
-            Clipboard.SetText(card_value.Text);
-        }
-
-        private void expiry_value_Click(object sender, EventArgs e)
-        {
-            Clipboard.SetText(expiry_value.Text);
-        }
-
-        private void cvc_value_Click(object sender, EventArgs e)
-        {
-            Clipboard.SetText(cvc_value.Text);
-        }
-
     }
 }

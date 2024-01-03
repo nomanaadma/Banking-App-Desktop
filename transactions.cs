@@ -56,7 +56,7 @@ namespace Banking_App
                 }
                 else if (rowData[2] == "none")
                 {
-                    reference = "Money Withdrawed";
+                    reference = "Money Withdrew";
                 }
                 else
                 {

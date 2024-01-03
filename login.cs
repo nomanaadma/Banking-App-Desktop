@@ -34,14 +34,14 @@ namespace Banking_App
                 string[] matchingUser = FileSystemCus.findOne("users", dataRow[0]);
 
                 if (matchingUser.Length == 0) {
-                    validationMessage += "\n - Invalid Email";
+                    validationMessage += "\n - The User with this email doesn't Exists";
                 } 
                 else
                 {
                     // if entered password not equal to file password
                     if (matchingUser[3] != dataRow[1])
                     {
-                        validationMessage += "\n - Invalid Password";
+                        validationMessage += "\n - Invalid Password for the user";
                     }
                     else
                     {
