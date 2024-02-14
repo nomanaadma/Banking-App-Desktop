@@ -4,28 +4,8 @@ namespace Banking_App
 {
     public class FileSystemCus
     {
-        public static string extension = ".txt";
-        public static void initialize()
-        {
-
-            string dataFolderPath = dataPath();
-
-            // creating ./data directory to store data
-            if (!Directory.Exists(dataFolderPath))
-                Directory.CreateDirectory(dataFolderPath);
-
-            // creating user file
-            string userPath = filePath("users");
-            if (!File.Exists(userPath))
-                File.WriteAllText(userPath, "id,full_name,email,password,cnic,balance,card_number,expiry,cvc\r\n");
-
-            // creating transactions file
-            string transactionPath = filePath("transactions");
-            if (!File.Exists(transactionPath))
-                File.WriteAllText(transactionPath, "id,from,to,amount,date\r\n");
-
-        }
-
+        private static string extension = ".txt";
+        
         public static string dataPath()
         {
             return Path.Combine(System.IO.Path.GetFullPath(@"..\..\..\"), "data");
