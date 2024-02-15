@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using System.Windows.Forms.VisualStyles;
 
 namespace Banking_App
 {
@@ -14,6 +15,18 @@ namespace Banking_App
         public static string filePath(string file)
         {
             return Path.Combine(dataPath(), file) + extension;
+        }
+
+        public static string ToValueString(Dictionary<string, string> data)
+        {
+            return string.Join(",", data.Select(v => v.Value) .ToArray());
+        }
+
+        public static void writeDataTemp(string file, Dictionary<string, string> data)
+        {
+            file = filePath(file);
+            string dataRow = GlobalCus.generateId() + "," + ToValueString(data) + ",\r\n";
+            File.AppendAllText(file, dataRow);
         }
 
         public static void writeData(string file, string[] data)
