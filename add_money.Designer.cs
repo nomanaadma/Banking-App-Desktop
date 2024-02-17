@@ -47,7 +47,7 @@
             back_button.TabIndex = 20;
             back_button.Text = "Back";
             back_button.UseVisualStyleBackColor = false;
-            back_button.Click += back_button_Click;
+            back_button.Click += Back_button_Click;
             // 
             // enter_amount_label
             // 
@@ -91,7 +91,7 @@
             add_money_button.TabIndex = 19;
             add_money_button.Text = "Add Money";
             add_money_button.UseVisualStyleBackColor = false;
-            add_money_button.Click += add_money_button_Click;
+            add_money_button.Click += Add_money_button_Click;
             // 
             // add_money
             // 
