@@ -1,8 +1,8 @@
 namespace Banking_App
 {
-    public partial class banking_app : Form
+    public partial class BankingApp : Form
     {
-        public banking_app()
+        public BankingApp()
         {
             InitializeComponent();
         }

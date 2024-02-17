@@ -1,6 +1,6 @@
 ﻿namespace Banking_App
 {
-    partial class send_money
+    partial class SendMoney
     {
         /// <summary>
         /// Required designer variable.

@@ -1,13 +1,13 @@
 ﻿namespace Banking_App
 {
-    public partial class send_money : Form
+    public partial class SendMoney : Form
     {
         private readonly Dictionary<string, string> user;
         public delegate void DashboardShowD();
         private readonly DashboardShowD dashboardShow;
         private readonly Dictionary<string, string> data = [];
 
-        public send_money(Dictionary<string, string> loggedInUser, DashboardShowD dashboardShowB)
+        public SendMoney(Dictionary<string, string> loggedInUser, DashboardShowD dashboardShowB)
         {
             user = loggedInUser;
             dashboardShow = dashboardShowB;

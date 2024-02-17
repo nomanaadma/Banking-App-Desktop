@@ -62,13 +62,13 @@ namespace Banking_App
 
         private void Add_money_button_Click(object sender, EventArgs e)
         {
-            new add_money(user, Show).Show();
+            new AddMoney(user, Show).Show();
             Hide();
         }
 
         private void Send_money_button_Click(object sender, EventArgs e)
         {
-            new send_money(user, Show).Show();
+            new SendMoney(user, Show).Show();
             Hide();
         }
 
@@ -80,7 +80,7 @@ namespace Banking_App
 
         private void Withdraw_money_button_Click(object sender, EventArgs e)
         {
-            new withdraw_money(user, Show).Show();
+            new WithdrawMoney(user, Show).Show();
             Hide();
         }
 

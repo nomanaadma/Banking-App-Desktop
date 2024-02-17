@@ -1,6 +1,6 @@
 ﻿namespace Banking_App
 {
-    partial class withdraw_money
+    partial class WithdrawMoney
     {
         /// <summary>
         /// Required designer variable.

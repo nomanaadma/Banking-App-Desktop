@@ -1,6 +1,6 @@
 ﻿namespace Banking_App
 {
-    partial class banking_app
+    partial class BankingApp
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(banking_app));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BankingApp));
             login = new Button();
             signup_button = new Button();
             logo_box = new PictureBox();

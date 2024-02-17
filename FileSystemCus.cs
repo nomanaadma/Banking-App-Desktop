@@ -50,7 +50,7 @@ namespace Banking_App
                     var dRow = new Dictionary<string, string>();
                     var dataColumns = row.Split(",");
 
-                    for (var i = 0; i < dataColumns.Length - 1; i++)
+                    for (var i = 0; i < dataColumns.Length; i++)
                     {
                         dRow[titles[i]] = dataColumns[i];
                     }
