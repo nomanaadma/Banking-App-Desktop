@@ -48,7 +48,7 @@
             back_button.TabIndex = 20;
             back_button.Text = "Back";
             back_button.UseVisualStyleBackColor = false;
-            back_button.Click += back_button_Click;
+            back_button.Click += Back_button_Click;
             // 
             // enter_amount_label
             // 
@@ -92,7 +92,7 @@
             withdraw_money_button.TabIndex = 19;
             withdraw_money_button.Text = "Withdraw";
             withdraw_money_button.UseVisualStyleBackColor = false;
-            withdraw_money_button.Click += withdraw_money_button_Click;
+            withdraw_money_button.Click += Withdraw_money_button_Click;
             // 
             // money_label
             // 

@@ -2,24 +2,21 @@
 {
     public partial class withdraw_money : Form
     {
-        private string[] user;
-        private Dashboard dashboard;
-        public withdraw_money(Dashboard dashboardCl)
+        private readonly Dictionary<string, string> user;
+        public delegate void DashboardShowD();
+        private readonly DashboardShowD dashboardShow;
+
+        public withdraw_money(Dictionary<string, string> loggedInUser, DashboardShowD dashboardShowB)
         {
-            dashboard = dashboardCl;
-            user = dashboard.user;
+            user = loggedInUser;
+            dashboardShow = dashboardShowB;
+            
             InitializeComponent();
         }
 
-        private void back_button_Click(object sender, EventArgs e)
+        private void Withdraw_money_button_Click(object sender, EventArgs e)
         {
-            Close();
-            dashboard.Show();
-        }
-
-        private void withdraw_money_button_Click(object sender, EventArgs e)
-        {
-            string amount = enter_amount_input.Text.Trim();
+            var amount = enter_amount_input.Text.Trim();
 
             if (amount == "" || amount == "0" || amount.All(char.IsDigit) == false)
             {
@@ -27,8 +24,8 @@
                 return;
             }
 
-            int amountInt = int.Parse(amount);
-            int userBalance = int.Parse(user[5]);
+            var amountInt = int.Parse(amount);
+            var userBalance = int.Parse(user["balance"]);
 
             if( amountInt > userBalance )
             {
@@ -37,24 +34,35 @@
             }
 
             // updating amount to current user and file system
-            string newAmount = (userBalance - amountInt).ToString();
-            user[5] = newAmount;
-            FileSystemCus.UpdateRow("users", user);
+            var newAmount = (userBalance - amountInt).ToString();
+            user["balance"] = newAmount;
+            
+            FileSystemCus.UpdateRowTemp("users", user);
+
 
             // adding transaction in file
-            FileSystemCus.writeData("transactions", [
-                user[0],
-                "none",
-                amount,
-                DateTime.Now.ToString(),
-            ]);
+            FileSystemCus.WriteDataTemp("transactions", new Dictionary<string, string>()
+            {
+                ["from"] = user["id"],
+                ["to"] = "none",
+                ["amount"] = amount,
+                ["date"] = DateTime.Now.ToString()
+            });
 
             MessageBox.Show("Successfully withdrew", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             Close();
-            dashboard.Show();
+            dashboardShow();
 
         }
+
+        private void Back_button_Click(object sender, EventArgs e)
+        {
+            Close();
+            dashboardShow();
+        }
+
+
     }
 
 }
