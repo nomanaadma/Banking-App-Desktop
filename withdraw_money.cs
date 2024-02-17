@@ -1,16 +1,10 @@
 ﻿namespace Banking_App
 {
-    public partial class WithdrawMoney : Form
+    public partial class WithdrawMoney : DataForm
     {
-        private readonly Dictionary<string, string> user;
-        public delegate void DashboardShowD();
-        private readonly DashboardShowD dashboardShow;
-
         public WithdrawMoney(Dictionary<string, string> loggedInUser, DashboardShowD dashboardShowB)
-        {
-            user = loggedInUser;
-            dashboardShow = dashboardShowB;
-            
+            : base(loggedInUser, dashboardShowB)
+        {            
             InitializeComponent();
         }
 

@@ -1,20 +1,12 @@
 ﻿namespace Banking_App
 {
-    public partial class AddMoney : Form
+    public partial class AddMoney : DataForm
     {
         
-        private readonly Dictionary<string, string> user;
-        public delegate void DashboardShowD();
-        private readonly DashboardShowD dashboardShow;
-
-        public AddMoney(Dictionary<string, string> loggedInUser, DashboardShowD dashboardShowB)
+        public AddMoney(Dictionary<string, string> loggedInUser, DashboardShowD dashboardShowB) 
+            : base(loggedInUser, dashboardShowB)
         {
-
-            user = loggedInUser;
-            dashboardShow = dashboardShowB;
-
             InitializeComponent();
-
         }
 
         private void Add_money_button_Click(object sender, EventArgs e)
