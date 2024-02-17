@@ -4,95 +4,80 @@ namespace Banking_App
 {
     public partial class Transactions : Form
     {
-        private string[] user;
-        private Dashboard dashboard;
-        private int rowLength = 0;
-        public Transactions(Dashboard dashboardCl)
-        {
-            dashboard = dashboardCl;
-            user = dashboard.user;
 
-            string[] userTransRows = FileSystemCus.findAll("transactions", user[0]);
+        private readonly Dictionary<string, string> user;
+        public delegate void DashboardShowD();
+        private readonly DashboardShowD dashboardShow;
+
+        private readonly int rowLength = 0;
+        public Transactions(Dictionary<string, string> loggedInUser, DashboardShowD dashboardShowB)
+        {
+            user = loggedInUser;
+            dashboardShow = dashboardShowB;
+
+            var userTransRows = FileSystemCus.FindAllTemp("transactions", user["id"]);
 
             InitializeComponent();
-            
-            rowLength = userTransRows.Length;
 
-            Array.Reverse(userTransRows);
+            rowLength = userTransRows.Count;
 
+            userTransRows.Reverse();
 
-            DataTable dataTable = new DataTable();
+            var dataTable = new DataTable();
+
             dataTable.Columns.Add("Reference");
             dataTable.Columns.Add("Amount");
             dataTable.Columns.Add("Date");
 
-
-            foreach (var row in userTransRows)
+            foreach (var rowData in userTransRows)
             {
-                string[] rowData = row.Split(",");
+                var transAmount = rowData["amount"];
 
-                string transAmount = rowData[3];
-
-                bool transferred_by_crUser = false;
-                if (rowData[1] == user[0])
+                var transferred_by_crUser = false;
+                if (rowData["from"] == user["id"])
                 {
                     transAmount = "-" + transAmount;
                     transferred_by_crUser = true;
                 }
 
-                string reference = "";
-                if (rowData[1] == "none")
-                {
+                string? reference;
+
+                if (rowData["from"] == "none")
                     reference = "Money Deposited";
-                }
-                else if (rowData[2] == "none")
-                {
+                else if (rowData["to"] == "none")
                     reference = "Money Withdrew";
-                }
                 else
                 {
 
-                    string otherUserCond = "";
+                    string? otherUserCond;
 
                     // if the transaction is done by current loggedin user to some other user
                     if (transferred_by_crUser)
                     {
-                        otherUserCond = rowData[2];
+                        otherUserCond = rowData["to"];
                         reference = "Money Tranfered to: ";
                     }
                     else
                     {
-                        otherUserCond = user[0];
+                        otherUserCond = user["id"];
                         reference = "Money Tranfered by: ";
                     }
 
-                    string[] userTransdata = FileSystemCus.findOne("users", otherUserCond);
+                    var userTransdata = FileSystemCus.FindOneTemp("users", otherUserCond);
 
-                    reference += userTransdata[2] + " - " + userTransdata[4];
+                    reference += userTransdata["email"] + " - " + userTransdata["cnic"];
 
                 }
 
-
-                dataTable.Rows.Add(reference, transAmount, rowData[4]);
+                dataTable.Rows.Add(reference, transAmount, rowData["date"]);
             }
 
-            // Bind the DataTable to the DataGridView
             transaction_data.DataSource = dataTable;
 
-            transaction_data.ReadOnly = true; // Make the DataGridView read-only
-
-            transaction_data.RowHeadersVisible = false;
-
-            transaction_data.ScrollBars = ScrollBars.Both;
-
-            transaction_data.CellFormatting += DataGridView1_CellFormatting;
-
         }
-
-        private void DataGridView1_CellFormatting(object? sender, DataGridViewCellFormattingEventArgs e)
+        private void Transaction_data_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-
-            int targetColumnIndex = 1;
+            var targetColumnIndex = 1;
 
             if (e.ColumnIndex != targetColumnIndex || e.CellStyle == null)
                 return;
@@ -101,21 +86,20 @@ namespace Banking_App
                 e.CellStyle.ForeColor = Color.Red;
             else
                 e.CellStyle.ForeColor = Color.Green;
-
         }
 
-        private void back_button_Click(object sender, EventArgs e)
+        private void Back_button_Click(object sender, EventArgs e)
         {
             Close();
-            dashboard.Show();
+            dashboardShow();
         }
 
-        private void transactions_Load(object sender, EventArgs e)
+        private void Transactions_Load(object sender, EventArgs e)
         {
-
-            if(rowLength == 0)
+            if (rowLength == 0)
                 MessageBox.Show("There are no transaction.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
         }
+
+       
     }
 }

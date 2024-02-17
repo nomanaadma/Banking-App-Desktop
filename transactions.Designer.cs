@@ -48,7 +48,7 @@
             back_button.TabIndex = 1;
             back_button.Text = "Back";
             back_button.UseVisualStyleBackColor = true;
-            back_button.Click += back_button_Click;
+            back_button.Click += Back_button_Click;
             // 
             // transaction_data
             // 
@@ -84,14 +84,15 @@
             transaction_data.MultiSelect = false;
             transaction_data.Name = "transaction_data";
             transaction_data.ReadOnly = true;
+            transaction_data.RowHeadersVisible = false;
             transaction_data.RowHeadersWidth = 50;
             transaction_data.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             transaction_data.RowTemplate.ReadOnly = true;
             transaction_data.RowTemplate.Resizable = DataGridViewTriState.False;
-            transaction_data.ScrollBars = ScrollBars.Vertical;
             transaction_data.ShowEditingIcon = false;
             transaction_data.Size = new Size(739, 378);
             transaction_data.TabIndex = 0;
+            transaction_data.CellFormatting += Transaction_data_CellFormatting;
             // 
             // transactions_label
             // 
@@ -105,7 +106,7 @@
             transactions_label.TabIndex = 24;
             transactions_label.Text = "Transactions";
             // 
-            // transactions
+            // Transactions
             // 
             AutoScaleDimensions = new SizeF(10F, 22F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -119,10 +120,10 @@
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Margin = new Padding(4, 3, 4, 3);
             MaximizeBox = false;
-            Name = "transactions";
+            Name = "Transactions";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Transactions";
-            Shown += transactions_Load;
+            Shown += Transactions_Load;
             ((System.ComponentModel.ISupportInitialize)transaction_data).EndInit();
             ResumeLayout(false);
             PerformLayout();

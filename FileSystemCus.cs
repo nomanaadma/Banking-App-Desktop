@@ -109,6 +109,28 @@ namespace Banking_App
             return findAll(file, data, true);
         }
 
+        public static void UpdateRowTemp(string file, Dictionary<string, string> rowData)
+        {
+
+            var fileData = readData(file);
+            var newData = "";
+
+            var rowId = rowData.First().Value + ',';
+
+            foreach (var row in fileData)
+            {
+                if (row.Contains(rowId))
+                    newData += ToValueString(rowData) + "\r\n"; // updated row
+                else
+                    newData += row + "\r\n";
+            }
+
+            file = filePath(file);
+            File.WriteAllText(file, string.Empty);
+            File.AppendAllText(file, newData);
+
+        }
+
         public static void UpdateRow(string file, string[] rowData) {
 
             string[] fileData = readData(file);
