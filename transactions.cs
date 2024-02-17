@@ -15,7 +15,7 @@ namespace Banking_App
             user = loggedInUser;
             dashboardShow = dashboardShowB;
 
-            var userTransRows = FileSystemCus.FindAllTemp("transactions", user["id"]);
+            var userTransRows = FileSystemCus.FindAll("transactions", user["id"]);
 
             InitializeComponent();
 
@@ -63,7 +63,7 @@ namespace Banking_App
                         reference = "Money Tranfered by: ";
                     }
 
-                    var userTransdata = FileSystemCus.FindOneTemp("users", otherUserCond);
+                    var userTransdata = FileSystemCus.FindOne("users", otherUserCond);
 
                     reference += userTransdata["email"] + " - " + userTransdata["cnic"];
 

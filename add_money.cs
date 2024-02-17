@@ -1,13 +1,13 @@
 ﻿namespace Banking_App
 {
-    public partial class add_money : Form
+    public partial class AddMoney : Form
     {
         
         private readonly Dictionary<string, string> user;
         public delegate void DashboardShowD();
         private readonly DashboardShowD dashboardShow;
 
-        public add_money(Dictionary<string, string> loggedInUser, DashboardShowD dashboardShowB)
+        public AddMoney(Dictionary<string, string> loggedInUser, DashboardShowD dashboardShowB)
         {
 
             user = loggedInUser;
@@ -34,10 +34,10 @@
             var newAmount = (currentUserBalance + moneyToAdd).ToString();
             user["balance"] = newAmount;
 
-            FileSystemCus.UpdateRowTemp("users", user);
+            FileSystemCus.UpdateRow("users", user);
 
             // adding transaction in file
-            FileSystemCus.WriteDataTemp("transactions", new Dictionary<string, string>()
+            FileSystemCus.WriteData("transactions", new Dictionary<string, string>()
             {
                 ["from"] = "none",
                 ["to"] = user["id"],

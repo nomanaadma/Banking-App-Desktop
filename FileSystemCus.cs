@@ -1,73 +1,41 @@
 ﻿using System.Text;
-using System.Windows.Forms.VisualStyles;
-
 namespace Banking_App
 {
     public class FileSystemCus
     {
-        private static string extension = ".txt";
+        private static readonly string extension = ".txt";
         
-        public static string dataPath()
+        public static string DataPath()
         {
-            return Path.Combine(System.IO.Path.GetFullPath(@"..\..\..\"), "data");
+            return Path.Combine(Path.GetFullPath(@"..\..\..\"), "data");
         }
 
-        public static string filePath(string file)
+        public static string FilePath(string file)
         {
-            return Path.Combine(dataPath(), file) + extension;
+            return Path.Combine(DataPath(), file) + extension;
         }
 
-        public static string ToValueString(Dictionary<string, string> data)
+        private static string ToValueString(Dictionary<string, string> data)
         {
             return string.Join(",", data.Select(v => v.Value) .ToArray());
         }
 
-        public static void WriteDataTemp(string file, Dictionary<string, string> data)
+        public static void WriteData(string file, Dictionary<string, string> data)
         {
-            file = filePath(file);
-            string dataRow = GlobalCus.generateId() + "," + ToValueString(data) + ",\r\n";
+            file = FilePath(file);
+            string dataRow = GlobalCus.GenerateId() + "," + ToValueString(data) + ",\r\n";
             File.AppendAllText(file, dataRow);
         }
 
-        public static void writeData(string file, string[] data)
+        private static string[] ReadData(string file)
         {
-            file = filePath(file);
-            string dataRow = GlobalCus.generateId() + "," + string.Join(",", data) + ",\r\n";
-            File.AppendAllText(file, dataRow);
-        }
-
-        public static string[] readData(string file)
-        {
-            file = filePath(file);
+            file = FilePath(file);
             return File.ReadAllLines(file, Encoding.UTF8);
         }
 
-        public static string[] findAll(string file, string data, bool single = false)
+        public static List<Dictionary<string, string>> FindAll(string file, string data, bool single = false)
         {
-            string[] rows = readData(file);
-
-            string[] foundRows = [];
-
-            string dataWithQoma = data + ',';
-
-            foreach (var row in rows)
-            {
-                if (row.Contains(dataWithQoma))
-                {
-                    if (single == true) return row.Split(',');
-
-                    Array.Resize(ref foundRows, foundRows.Length + 1);
-                    foundRows[foundRows.Length - 1] = row;
-
-                }
-           
-            }
-
-            return foundRows;
-        }
-        public static List<Dictionary<string, string>> FindAllTemp(string file, string data, bool single = false)
-        {
-            var rows = readData(file);
+            var rows = ReadData(file);
 
             var titles = rows[0].Split(",");
 
@@ -98,21 +66,17 @@ namespace Banking_App
 
             return foundRows;
         }
-        public static Dictionary<string, string> FindOneTemp(string file, string data)
+
+        public static Dictionary<string, string> FindOne(string file, string data)
         {
-            var result = FindAllTemp(file, data, true);
+            var result = FindAll(file, data, true);
             return result.Count == 0 ? [] : result[0];
         }
 
-        public static string[] findOne(string file, string data)
-        {
-            return findAll(file, data, true);
-        }
-
-        public static void UpdateRowTemp(string file, Dictionary<string, string> rowData)
+        public static void UpdateRow(string file, Dictionary<string, string> rowData)
         {
 
-            var fileData = readData(file);
+            var fileData = ReadData(file);
             var newData = "";
 
             var rowId = rowData.First().Value + ',';
@@ -125,31 +89,7 @@ namespace Banking_App
                     newData += row + "\r\n";
             }
 
-            file = filePath(file);
-            File.WriteAllText(file, string.Empty);
-            File.AppendAllText(file, newData);
-
-        }
-
-        public static void UpdateRow(string file, string[] rowData) {
-
-            string[] fileData = readData(file);
-            string newData = "";
-
-            foreach (var row in fileData)
-            {
-                if( row.Contains(rowData[0]+",") )
-                {
-                    string updatedRow = string.Join(",", rowData) + "\r\n";
-                    newData += updatedRow;
-                }
-                else
-                {
-                    newData += row + "\r\n";
-                }
-            }
-
-            file = filePath(file);
+            file = FilePath(file);
             File.WriteAllText(file, string.Empty);
             File.AppendAllText(file, newData);
 

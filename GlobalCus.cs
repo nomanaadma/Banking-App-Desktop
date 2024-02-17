@@ -1,42 +1,44 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Banking_App
+﻿namespace Banking_App
 {
-    internal class GlobalCus
+    public class GlobalCus
     {
-        public static string generate_number(int count)
+        public static string GenerateNumber(int count)
         {
 
-            Random random = new Random();
-            int[] randomIntegers = new int[count];
+            var random = new Random();
+            var randomIntegers = new int[count];
 
-            // Generate 16 random integers
             for (int i = 0; i < randomIntegers.Length; i++)
-            {
-                randomIntegers[i] = random.Next(0, 10); // Generating random integers between 0 and 9
-            }
+                randomIntegers[i] = random.Next(0, 10);
 
-            // Convert the array of integers to a string
-            string result = string.Join("", randomIntegers);
-
-            return result;
+            return string.Join("", randomIntegers);
 
         }
 
-        public static string generateId()
+        public static string GenerateId()
         {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-            Random random = new Random();
 
-            string shortId = new string(Enumerable.Repeat(chars, 6)
-              .Select(s => s[random.Next(s.Length)]).ToArray());
+            var charArr = chars.ToCharArray();
+            var random = new Random();
+            random.Shuffle(charArr);
 
-            return shortId;
+            return  string.Join("", charArr)[..6];
+
         }
 
     }
+    static class RandomExtensions
+    {
+        public static void Shuffle<T>(this Random rng, T[] array)
+        {
+            int n = array.Length;
+            while (n > 1)
+            {
+                int k = rng.Next(n--);
+                (array[k], array[n]) = (array[n], array[k]);
+            }
+        }
+    }
+
 }

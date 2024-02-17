@@ -2,8 +2,8 @@
 {
     public partial class Login : Form
     {
-        private readonly Dictionary<string, string> _data = [];
-        private Dictionary<string, string> _user = [];
+        private readonly Dictionary<string, string> data = [];
+        private Dictionary<string, string> user = [];
         
         public Login()
         {
@@ -14,26 +14,26 @@
         {
             var validationMessage = "";
 
-            if (_data["email"].Contains('@') == false || _data["email"].Contains('.') == false)
+            if (data["email"].Contains('@') == false || data["email"].Contains('.') == false)
                 validationMessage += "\n - The email must not be empty and in the correct format.";
 
-            if (_data["password"].Length <= 0)
+            if (data["password"].Length <= 0)
                 validationMessage += "\n - The password must not be empty.";
 
 
             if (validationMessage == "")
             {
-                var matchingUser = FileSystemCus.FindOneTemp("users", _data["email"]);
+                var matchingUser = FileSystemCus.FindOne("users", data["email"]);
 
                 if (matchingUser.Count == 0)
                     validationMessage += "\n - The User with this email doesn't Exists";
                 else
                 {
                     // if entered password not equal to file password
-                    if (matchingUser["password"] != _data["password"])
+                    if (matchingUser["password"] != data["password"])
                         validationMessage += "\n - Invalid Password for the user";
                     else
-                        _user = matchingUser;
+                        user = matchingUser;
                 }
 
             }
@@ -44,8 +44,8 @@
         private void Login_button_Click(object sender, EventArgs e)
         {
             
-            _data["email"] = email_input.Text.Trim();
-            _data["password"] = password_input.Text.Trim();
+            data["email"] = email_input.Text.Trim();
+            data["password"] = password_input.Text.Trim();
 
             var validate = Validation();
 
@@ -55,7 +55,7 @@
                 return;
             }
 
-            new Dashboard(_user).Show();
+            new Dashboard(user).Show();
 
             Close();
 

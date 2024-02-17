@@ -37,11 +37,11 @@
             var newAmount = (userBalance - amountInt).ToString();
             user["balance"] = newAmount;
             
-            FileSystemCus.UpdateRowTemp("users", user);
+            FileSystemCus.UpdateRow("users", user);
 
 
             // adding transaction in file
-            FileSystemCus.WriteDataTemp("transactions", new Dictionary<string, string>()
+            FileSystemCus.WriteData("transactions", new Dictionary<string, string>()
             {
                 ["from"] = user["id"],
                 ["to"] = "none",

@@ -91,7 +91,7 @@
             }
 
             // find the beneficiary user by ID
-            var bfUserData = FileSystemCus.FindOneTemp("users", data["enter"]);
+            var bfUserData = FileSystemCus.FindOne("users", data["enter"]);
 
             if (bfUserData.Count == 0)
             {
@@ -112,16 +112,16 @@
 
             // updating balance of new user
             bfUserData["balance"] = (bfUserBalance + amount_entered).ToString();
-            FileSystemCus.UpdateRowTemp("users", bfUserData);
+            FileSystemCus.UpdateRow("users", bfUserData);
 
             // New Amount of Logged in user update
             var currentUserBalance = int.Parse(user["balance"]);
             var newAmount = (currentUserBalance - amount_entered).ToString();
             user["balance"] = newAmount;
-            FileSystemCus.UpdateRowTemp("users", user);
+            FileSystemCus.UpdateRow("users", user);
 
             // adding transaction in file
-            FileSystemCus.WriteDataTemp("transactions", new Dictionary<string, string>()
+            FileSystemCus.WriteData("transactions", new Dictionary<string, string>()
             {
                 ["from"] = user["id"],
                 ["to"] = bfUserData["id"],

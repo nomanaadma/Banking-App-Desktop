@@ -35,7 +35,7 @@ namespace Banking_App
 
         private void Update_balance_r()
         {
-            var userRows = FileSystemCus.FindOneTemp("users", user["id"]);
+            var userRows = FileSystemCus.FindOne("users", user["id"]);
             
             if (userRows.Count == 0)
                 return;
