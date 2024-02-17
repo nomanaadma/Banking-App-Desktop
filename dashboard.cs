@@ -1,90 +1,86 @@
-﻿namespace Banking_App
+﻿using UITimer = System.Windows.Forms.Timer;
+
+namespace Banking_App
 {
     public partial class Dashboard : Form
     {
-        public string[] user;
-        private System.Windows.Forms.Timer updateTimer;
+        private Dictionary<string, string> user;
+        private readonly UITimer updateTimer;
         private bool isUpdateRunning = false;
-        public Dashboard(string[] loggedInUser)
+        public Dashboard(Dictionary<string, string> loggedInUser)
         {
             user = loggedInUser;
             InitializeComponent();
 
-            updateTimer = new System.Windows.Forms.Timer
+            updateTimer = new UITimer
             {
                 Interval = 1000
             };
 
-            updateTimer.Tick += updateTimerTick;
+            updateTimer.Tick += UpdateTimerTick;
 
-            // Start the Timer
             updateTimer.Start();
         }
 
-        private void updateTimerTick(object? sender, EventArgs e)
+        private void UpdateTimerTick(object? sender, EventArgs e)
         {
-            // Check if the recursive function is already running
-            if (!isUpdateRunning)
-            {
-                // Set the flag to indicate that the function is now running
-                isUpdateRunning = true;
+            if (isUpdateRunning)
+                return;
 
-                // Your recursive function logic goes here
-                update_balance_r();
+            isUpdateRunning = true;
+            Update_balance_r();
+            isUpdateRunning = false;
 
-                // Reset the flag after the function completes
-                isUpdateRunning = false;
-            }
         }
 
-        private void update_balance_r()
+        private void Update_balance_r()
         {
-            string[] userRows = FileSystemCus.findOne("users", user[0]);
+            var userRows = FileSystemCus.FindOneTemp("users", user["id"]);
             
-            if (userRows.Length == 0)
+            if (userRows.Count == 0)
                 return;
 
             user = userRows;
 
-            update_balance(user[5]);
+            Update_balance(user["balance"]);
 
         }
 
-        private void dashboard_Load(object sender, EventArgs e)
+        private void Dashboard_Load(object sender, EventArgs e)
         {
-            user_label.Text = user[1];
-            card_value.Text = user[6];
-            expiry_value.Text = "02/" + user[7];
-            cvc_value.Text = user[8];
-            update_balance(user[5]);
+            user_label.Text = user["full_name"];
+            card_value.Text = user["card_number"];
+            expiry_value.Text = "02/" + user["expiry"];
+            cvc_value.Text = user["cvc"];
+            Update_balance(user["balance"]);
         }
-        public void update_balance(string amount)
+        public void Update_balance(string amount)
         {
-            double amountCr = double.Parse(amount);
+            var amountCr = double.Parse(amount);
             amount_label.Text = $"{amountCr:N0}";
         }
 
-        private void add_money_button_Click(object sender, EventArgs e)
+        private void Add_money_button_Click(object sender, EventArgs e)
         {
-            new add_money(this).Show();
+            new add_money(user, Show).Show();
             Hide();
         }
 
-        private void send_money_button_Click(object sender, EventArgs e)
+        private void Send_money_button_Click(object sender, EventArgs e)
         {
-            new send_money(this).Show();
+            new send_money(user, Show).Show();
             Hide();
         }
 
-        private void transactions_button_Click(object sender, EventArgs e)
+        private void Transactions_button_Click(object sender, EventArgs e)
         {
-            new Transactions(this).Show();
+            new Transactions(user, Show).Show();
             Hide();
         }
 
-        private void withdraw_money_button_Click(object sender, EventArgs e)
+        private void Withdraw_money_button_Click(object sender, EventArgs e)
         {
-            new withdraw_money(this).Show();
+            new withdraw_money(user, Show).Show();
             Hide();
         }
 

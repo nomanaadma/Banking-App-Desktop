@@ -106,7 +106,7 @@
             add_money_button.TabIndex = 10;
             add_money_button.Text = "Add Money";
             add_money_button.UseVisualStyleBackColor = false;
-            add_money_button.Click += add_money_button_Click;
+            add_money_button.Click += Add_money_button_Click;
             // 
             // transactions_button
             // 
@@ -121,7 +121,7 @@
             transactions_button.TabIndex = 9;
             transactions_button.Text = "Transactions";
             transactions_button.UseVisualStyleBackColor = false;
-            transactions_button.Click += transactions_button_Click;
+            transactions_button.Click += Transactions_button_Click;
             // 
             // send_money_button
             // 
@@ -137,7 +137,7 @@
             send_money_button.Text = "Send Money";
             send_money_button.UseMnemonic = false;
             send_money_button.UseVisualStyleBackColor = false;
-            send_money_button.Click += send_money_button_Click;
+            send_money_button.Click += Send_money_button_Click;
             // 
             // card_label
             // 
@@ -210,7 +210,7 @@
             withdraw_money_button.Text = "Withdraw Money";
             withdraw_money_button.UseMnemonic = false;
             withdraw_money_button.UseVisualStyleBackColor = false;
-            withdraw_money_button.Click += withdraw_money_button_Click;
+            withdraw_money_button.Click += Withdraw_money_button_Click;
             // 
             // Dashboard
             // 
@@ -241,7 +241,7 @@
             Name = "Dashboard";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Dashboard";
-            Load += dashboard_Load;
+            Load += Dashboard_Load;
             ResumeLayout(false);
             PerformLayout();
         }
