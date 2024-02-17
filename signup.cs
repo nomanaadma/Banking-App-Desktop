@@ -2,7 +2,7 @@
 {
     public partial class Signup : Form
     {
-        public readonly Dictionary<string, string>  _data = [];
+        private readonly Dictionary<string, string>  _data = [];
 
         public Signup()
         {
@@ -34,7 +34,6 @@
 
             return true;
         }
-
 
         private string validation()
         {
