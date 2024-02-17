@@ -22,7 +22,7 @@ namespace Banking_App
             return string.Join(",", data.Select(v => v.Value) .ToArray());
         }
 
-        public static void writeDataTemp(string file, Dictionary<string, string> data)
+        public static void WriteDataTemp(string file, Dictionary<string, string> data)
         {
             file = filePath(file);
             string dataRow = GlobalCus.generateId() + "," + ToValueString(data) + ",\r\n";
@@ -40,28 +40,6 @@ namespace Banking_App
         {
             file = filePath(file);
             return File.ReadAllLines(file, Encoding.UTF8);
-        }
-        public static List<string> findAllTemp(string file, string data, bool single = false)
-        {
-            var rows = readData(file);
-
-            var foundRows = new List<string>();
-
-            string dataWithQoma = data + ',';
-
-            foreach (var row in rows)
-            {
-                if (row.Contains(dataWithQoma))
-                {
-                    if (single == true) return [.. row.Split(',')];
-
-                    foundRows.Add(row);
-
-                }
-
-            }
-
-            return foundRows;
         }
 
         public static string[] findAll(string file, string data, bool single = false)
@@ -87,10 +65,43 @@ namespace Banking_App
 
             return foundRows;
         }
-
-        public static List<string> findOneTemp(string file, string data)
+        public static List<Dictionary<string, string>> FindAllTemp(string file, string data, bool single = false)
         {
-            return findAllTemp(file, data, true);
+            var rows = readData(file);
+
+            var titles = rows[0].Split(",");
+
+            var foundRows = new List<Dictionary<string, string>>();
+
+            var dataWithQoma = data + ',';
+
+            foreach (var row in rows)
+            {
+                if (row.Contains(dataWithQoma))
+                {
+                    var dRow = new Dictionary<string, string>();
+                    var dataColumns = row.Split(",");
+
+                    for (var i = 0; i < dataColumns.Length - 1; i++)
+                    {
+                        dRow[titles[i]] = dataColumns[i];
+                    }
+
+                    foundRows.Add(dRow);
+
+                    if (single == true) 
+                        return foundRows;
+
+                }
+
+            }
+
+            return foundRows;
+        }
+        public static Dictionary<string, string> FindOneTemp(string file, string data)
+        {
+            var result = FindAllTemp(file, data, true);
+            return result.Count == 0 ? [] : result[0];
         }
 
         public static string[] findOne(string file, string data)

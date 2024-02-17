@@ -110,7 +110,7 @@
             show_password_input.TabIndex = 3;
             show_password_input.Text = "Show Password";
             show_password_input.UseVisualStyleBackColor = true;
-            show_password_input.CheckedChanged += show_password_input_CheckedChanged;
+            show_password_input.CheckedChanged += Show_password_input_CheckedChanged;
             // 
             // signup_button
             // 
@@ -124,7 +124,7 @@
             signup_button.TabIndex = 6;
             signup_button.Text = "Signup";
             signup_button.UseVisualStyleBackColor = false;
-            signup_button.Click += signup_button_Click;
+            signup_button.Click += Signup_button_Click;
             // 
             // label1
             // 

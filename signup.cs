@@ -8,7 +8,7 @@
         {
             InitializeComponent();
         }
-        private void show_password_input_CheckedChanged(object sender, EventArgs e)
+        private void Show_password_input_CheckedChanged(object sender, EventArgs e)
         {
             if (show_password_input.Checked)
                 password_input.PasswordChar = '\0';
@@ -16,7 +16,7 @@
                 password_input.PasswordChar = '*';
         }
 
-        private bool validatePassword()
+        private bool ValidatePassword()
         {
             var passwd = _data["password"];
 
@@ -35,10 +35,10 @@
             return true;
         }
 
-        private string validation()
+        private string Validation()
         {
 
-            string validationMessage = "";
+            var validationMessage = "";
 
             if (_data["fullname"].Length < 5)
                 validationMessage += "\n - The Full Name must be more than 5 characters.";
@@ -46,7 +46,7 @@
             if (_data["email"].Contains('@') == false || _data["email"].Contains('.') == false)
                 validationMessage += "\n - The email must not be empty and in the correct format.";
 
-            if (this.validatePassword() == false)
+            if (ValidatePassword() == false)
                 validationMessage += "\n - The password must be between 5 and 10 characters in length, include at least one lowercase and one uppercase character, and must not contain any white spaces.";
 
             if (
@@ -60,14 +60,14 @@
             if (validationMessage == "")
             {
                 
-                string[] getUserByMail = FileSystemCus.findOne("users", _data["email"]);
+                var getUserByMail = FileSystemCus.FindOneTemp("users", _data["email"]);
 
-                if(getUserByMail.Length != 0)
+                if(getUserByMail.Count != 0)
                     validationMessage += "\n - The User with this email already Exists";
 
-                string[] getUserByCNIC = FileSystemCus.findOne("users", _data["cnic"]);
+                var getUserByCNIC = FileSystemCus.FindOneTemp("users", _data["cnic"]);
 
-                if (getUserByCNIC.Length != 0)
+                if (getUserByCNIC.Count != 0)
                     validationMessage += "\n - The User with this CNIC already Exists";
 
             }
@@ -75,7 +75,7 @@
             return validationMessage.TrimStart('\n');
         }
 
-        private void signup_button_Click(object sender, EventArgs e)
+        private void Signup_button_Click(object sender, EventArgs e)
         {
 
             _data["fullname"] = full_name_input.Text.Trim();
@@ -87,7 +87,7 @@
             _data["expiry"] = GlobalCus.generate_number(2);
             _data["cvc"] = GlobalCus.generate_number(3);
 
-            string validate = validation();
+            var validate = Validation();
 
             if (validate != "")
             {
@@ -95,7 +95,7 @@
                 return;
             }
 
-            FileSystemCus.writeDataTemp("users", _data);
+            FileSystemCus.WriteDataTemp("users", _data);
 
             MessageBox.Show("Successfully Created Account", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Close();

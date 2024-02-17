@@ -97,7 +97,7 @@
             login_button.TabIndex = 4;
             login_button.Text = "Login";
             login_button.UseVisualStyleBackColor = false;
-            login_button.Click += login_button_Click;
+            login_button.Click += Login_button_Click;
             // 
             // show_password_input
             // 
@@ -110,7 +110,7 @@
             show_password_input.TabIndex = 3;
             show_password_input.Text = "Show Password";
             show_password_input.UseVisualStyleBackColor = true;
-            show_password_input.CheckedChanged += show_password_input_CheckedChanged;
+            show_password_input.CheckedChanged += Show_password_input_CheckedChanged;
             // 
             // Login
             // 
