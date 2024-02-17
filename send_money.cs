@@ -2,36 +2,40 @@
 {
     public partial class send_money : Form
     {
-        private string[] user;
-        private Dashboard dashboard;
-        public send_money(Dashboard dashboardCl)
+        private readonly Dictionary<string, string> user;
+        public delegate void DashboardShowD();
+        private readonly DashboardShowD dashboardShow;
+        private readonly Dictionary<string, string> data = [];
+
+        public send_money(Dictionary<string, string> loggedInUser, DashboardShowD dashboardShowB)
         {
-            dashboard = dashboardCl;
-            user = dashboard.user;
+            user = loggedInUser;
+            dashboardShow = dashboardShowB;
+
             InitializeComponent();
         }
 
-        private void send_by_input_SelectedIndexChanged(object sender, EventArgs e)
+        private void Send_by_input_SelectedIndexChanged(object sender, EventArgs e)
         {
             send_type_label.Text = send_by_input.Text;
         }
 
-        private string validation(string[] dataRow)
+        private string Validation()
         {
-            string validationMessage = "";
+            var validationMessage = "";
 
-            if (dataRow[0].Length == 0)
+            if (data["send_by"].Length == 0)
                 validationMessage += "\n - The send by type must be not empty.";
 
 
-            switch (dataRow[0])
+            switch (data["send_by"])
             {
                 case "Email":
 
-                    if (dataRow[1].Contains('@') == false || dataRow[1].Contains('.') == false)
+                    if (data["enter"].Contains('@') == false || data["enter"].Contains('.') == false)
                         validationMessage += "\n - The email must not be empty and in the correct format.";
 
-                    if (dataRow[1] == user[2])
+                    if (data["enter"] == user["email"])
                         validationMessage += "\n - You cannot transfer money to yourself.";
 
                     break;
@@ -39,13 +43,13 @@
                 case "CNIC":
 
                     if (
-                        dataRow[1].Length > 13 ||
-                        dataRow[1].Length < 13 ||
-                        dataRow[1].All(char.IsDigit) == false
+                        data["enter"].Length > 13 ||
+                        data["enter"].Length < 13 ||
+                        data["enter"].All(char.IsDigit) == false
                     )
                         validationMessage += "\n - The CNIC must have a length of 13 characters.";
 
-                    if (dataRow[1] == user[4])
+                    if (data["enter"] == user["cnic"])
                         validationMessage += "\n - You cannot transfer money to yourself.";
 
                     break;
@@ -53,17 +57,16 @@
                 default:
 
                     validationMessage += "\n - Something Wrong with the Send Type.";
-
                     break;
 
             }
 
-            if (dataRow[2].All(char.IsDigit) == false || dataRow[2] == "" || dataRow[2] == "0")
+            if (data["amount"].All(char.IsDigit) == false || data["amount"] == "" || data["amount"] == "0")
                 validationMessage += "\n - The amount must not be empty and in numbers only.";
             else
             {
-                int amount = int.Parse(dataRow[2]);
-                int balance = int.Parse(user[5]);
+                var amount = int.Parse(data["amount"]);
+                var balance = int.Parse(user["balance"]);
 
                 if (amount > balance)
                     validationMessage += "\n - The amount must not be more than the balance.";
@@ -72,16 +75,14 @@
             return validationMessage.TrimStart('\n');
         }
 
-        private void send_money_button_Click(object sender, EventArgs e)
+        private void Send_money_button_Click(object sender, EventArgs e)
         {
 
-            string[] inputs = {
-                send_by_input.Text.Trim(),
-                enter_input.Text.Trim(),
-                amount_input.Text.Trim()
-            };
+            data["send_by"] = send_by_input.Text.Trim();
+            data["enter"] = enter_input.Text.Trim();
+            data["amount"] = amount_input.Text.Trim();
 
-            string validate = validation(inputs);
+            var validate = Validation();
 
             if (validate != "")
             {
@@ -90,53 +91,54 @@
             }
 
             // find the beneficiary user by ID
-            string[] bfUserData = FileSystemCus.findOne("users", inputs[1]);
+            var bfUserData = FileSystemCus.FindOneTemp("users", data["enter"]);
 
-            if (bfUserData.Length == 0)
+            if (bfUserData.Count == 0)
             {
                 MessageBox.Show("The User Can't be Found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            DialogResult dr = MessageBox.Show("Are you sure?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            var dialogConfirmation = MessageBox.Show("Are you sure?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
-            if (dr == DialogResult.No)
+            if (dialogConfirmation == DialogResult.No)
                 return;
 
             // getting existing balance of the beneficiary user
-            int bfUserBalance = int.Parse(bfUserData[5]);
+            var bfUserBalance = int.Parse(bfUserData["balance"]);
 
             // amount entered in int
-            int amount_entered = int.Parse(inputs[2]);
+            var amount_entered = int.Parse(data["amount"]);
 
             // updating balance of new user
-            bfUserData[5] = (bfUserBalance + amount_entered).ToString();
-            FileSystemCus.UpdateRow("users", bfUserData);
+            bfUserData["balance"] = (bfUserBalance + amount_entered).ToString();
+            FileSystemCus.UpdateRowTemp("users", bfUserData);
 
             // New Amount of Logged in user update
-            int currentUserBalance = int.Parse(user[5]);
-            string newAmount = (currentUserBalance - amount_entered).ToString();
-            user[5] = newAmount;
-            FileSystemCus.UpdateRow("users", user);
+            var currentUserBalance = int.Parse(user["balance"]);
+            var newAmount = (currentUserBalance - amount_entered).ToString();
+            user["balance"] = newAmount;
+            FileSystemCus.UpdateRowTemp("users", user);
 
             // adding transaction in file
-            FileSystemCus.writeData("transactions", [
-                user[0],
-                bfUserData[0],
-                inputs[2],
-                DateTime.Now.ToString(),
-            ]);
+            FileSystemCus.WriteDataTemp("transactions", new Dictionary<string, string>()
+            {
+                ["from"] = user["id"],
+                ["to"] = bfUserData["id"],
+                ["amount"] = data["amount"],
+                ["date"] = DateTime.Now.ToString()
+            });
 
             MessageBox.Show("Amount Transferred Successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Close();
-            dashboard.Show();
+            dashboardShow();
 
         }
 
-        private void back_button_Click(object sender, EventArgs e)
+        private void Back_button_Click(object sender, EventArgs e)
         {
             Close();
-            dashboard.Show();
+            dashboardShow();
         }
     }
 }

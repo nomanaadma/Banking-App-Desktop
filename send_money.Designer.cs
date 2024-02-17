@@ -59,7 +59,7 @@
             send_by_input.Name = "send_by_input";
             send_by_input.Size = new Size(252, 30);
             send_by_input.TabIndex = 1;
-            send_by_input.SelectedIndexChanged += send_by_input_SelectedIndexChanged;
+            send_by_input.SelectedIndexChanged += Send_by_input_SelectedIndexChanged;
             // 
             // enter_label
             // 
@@ -118,7 +118,7 @@
             send_money_button.TabIndex = 7;
             send_money_button.Text = "Send Money";
             send_money_button.UseVisualStyleBackColor = false;
-            send_money_button.Click += send_money_button_Click;
+            send_money_button.Click += Send_money_button_Click;
             // 
             // back_button
             // 
@@ -131,7 +131,7 @@
             back_button.TabIndex = 8;
             back_button.Text = "Back";
             back_button.UseVisualStyleBackColor = true;
-            back_button.Click += back_button_Click;
+            back_button.Click += Back_button_Click;
             // 
             // send_money_label
             // 
